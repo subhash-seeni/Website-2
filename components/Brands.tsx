@@ -157,10 +157,34 @@ export default function Brands() {
               <p className={styles.activeBrandTagline}>{activeBrand.tagline}</p>
             </div>
 
-            {/* Clickable Brand Navigation Index */}
+            {/* Architectural Brand Directory & Selector */}
             <div className={styles.brandIndexNav} role="tablist" aria-label="Brand Selector">
-              <span className={styles.indexLabel}>Brand Index:</span>
-              <div className={styles.indexPills}>
+              <div className={styles.brandNavHeader}>
+                <span className={styles.indexLabel}>Brand Directory</span>
+                <div className={styles.navControls}>
+                  <button
+                    type="button"
+                    className={styles.navArrowBtn}
+                    onClick={() => setActiveIndex((prev) => (prev > 0 ? prev - 1 : BRANDS.length - 1))}
+                    aria-label="Previous brand"
+                    title="Previous brand"
+                  >
+                    ←
+                  </button>
+                  <span className={styles.navPageIndicator}>{activeBrand.indexStr}</span>
+                  <button
+                    type="button"
+                    className={styles.navArrowBtn}
+                    onClick={() => setActiveIndex((prev) => (prev < BRANDS.length - 1 ? prev + 1 : 0))}
+                    aria-label="Next brand"
+                    title="Next brand"
+                  >
+                    →
+                  </button>
+                </div>
+              </div>
+
+              <div className={styles.tabGrid}>
                 {BRANDS.map((brand, idx) => (
                   <button
                     key={brand.id}
@@ -168,10 +192,14 @@ export default function Brands() {
                     id={`brand-tab-${brand.id}`}
                     aria-selected={idx === activeIndex}
                     aria-controls="brand-visual-panel"
-                    className={`${styles.indexBtn} ${idx === activeIndex ? styles.isActive : ''}`}
+                    className={`${styles.tabCard} ${idx === activeIndex ? styles.tabActive : ''} ${idx === 10 ? styles.tabFull : ''}`}
                     onClick={() => setActiveIndex(idx)}
                   >
-                    {brand.name}
+                    <span className={styles.tabIndexNum}>{String(idx + 1).padStart(2, '0')}</span>
+                    <span className={styles.tabBrandName}>{brand.name}</span>
+                    <svg className={styles.tabChevron} width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                      <path d="M4.5 2.5L8 6L4.5 9.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
                   </button>
                 ))}
               </div>

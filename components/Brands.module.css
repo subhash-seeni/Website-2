@@ -105,48 +105,152 @@
 
 /* Brand Selector Index */
 .brandIndexNav {
-  margin-top: 3rem;
+  margin-top: 2.25rem;
   border-top: 1px solid var(--border-light);
-  padding-top: 1.5rem;
+  padding-top: 1.25rem;
+}
+
+.brandNavHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.85rem;
 }
 
 .indexLabel {
   font-size: var(--text-xs);
-  font-weight: 600;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--text-muted-light);
-  display: block;
-  margin-bottom: 0.75rem;
+  letter-spacing: 0.08em;
+  color: var(--text-primary-light);
 }
 
-.indexPills {
+.navControls {
   display: flex;
-  flex-wrap: wrap;
+  align-items: center;
   gap: 0.4rem;
 }
 
-.indexBtn {
-  font-size: var(--text-xs);
-  font-weight: 500;
-  padding: 0.35rem 0.65rem;
+.navArrowBtn {
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: #FFFFFF;
-  color: var(--text-primary-light);
   border: 1px solid var(--border-light);
-  border-radius: 2px;
+  border-radius: 3px;
+  color: var(--text-primary-light);
   cursor: pointer;
-  min-height: 36px;
-  transition: background 150ms ease-out, border-color 150ms ease-out;
+  font-size: 0.8125rem;
+  transition: all 150ms ease-out;
 }
 
-.indexBtn:hover {
-  border-color: var(--text-primary-light);
-}
-
-.indexBtn.isActive {
+.navArrowBtn:hover {
   background: var(--bg-navy);
-  color: var(--text-primary-dark);
+  color: #FFFFFF;
   border-color: var(--bg-navy);
+}
+
+.navPageIndicator {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--accent-orange);
+  letter-spacing: 0.04em;
+  min-width: 48px;
+  text-align: center;
+}
+
+.tabGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.45rem;
+}
+
+.tabCard {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 0.65rem;
+  background: #FFFFFF;
+  border: 1px solid #E2DDD5;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: left;
+  position: relative;
+  transition: all 180ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tabCard:hover {
+  background: #FAF8F5;
+  border-color: var(--accent-orange);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.tabIndexNum {
+  font-family: var(--font-sans);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--text-muted-light);
+  margin-right: 0.45rem;
+  letter-spacing: 0.02em;
+  transition: color 150ms ease;
+}
+
+.tabBrandName {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--text-primary-light);
+  flex: 1;
+  transition: color 150ms ease;
+}
+
+.tabChevron {
+  color: #C0C8D0;
+  transition: transform 150ms ease, color 150ms ease;
+  flex-shrink: 0;
+}
+
+.tabCard:hover .tabChevron {
+  color: var(--accent-orange);
+  transform: translateX(2px);
+}
+
+.tabCard.tabActive {
+  background: var(--bg-navy);
+  border-color: var(--bg-navy);
+  box-shadow: 0 3px 10px rgba(14, 41, 78, 0.2);
+}
+
+.tabCard.tabActive::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--accent-orange);
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+.tabCard.tabActive .tabIndexNum {
+  color: var(--accent-orange);
+  font-weight: 700;
+}
+
+.tabCard.tabActive .tabBrandName {
+  color: #FFFFFF;
+  font-weight: 600;
+}
+
+.tabCard.tabActive .tabChevron {
+  color: var(--accent-orange);
+  transform: translateX(2px);
+}
+
+.tabCard.tabFull {
+  grid-column: 1 / -1;
 }
 
 /* Visual Panel */
