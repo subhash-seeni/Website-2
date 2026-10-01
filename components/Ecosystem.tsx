@@ -94,6 +94,34 @@ const PILLARS = [
   }
 ];
 
+const RETAIL_FORMATS = [
+  { name: 'Square', tag: 'Flagship', logo: '/Images/Logos/normalized/Square.png' },
+  { name: 'Bazaar', tag: 'Community', logo: '/Images/Logos/normalized/Bazaar.png' },
+  { name: 'Mini', tag: 'Everyday', logo: '/Images/Logos/normalized/Mini.png' },
+];
+
+const CATEGORY_BRANDS = [
+  { name: 'Essentials', logo: '/Images/Logos/normalized/Essentials.png' },
+  { name: 'Daily', logo: '/Images/Logos/normalized/Daily.png' },
+  { name: 'Farms', logo: '/Images/Logos/normalized/Farms.png' },
+  { name: 'Superfoods', logo: '/Images/Logos/normalized/Superfoods.png' },
+  { name: 'Health', logo: '/Images/Logos/normalized/Health.png' },
+  { name: 'Beauty', logo: '/Images/Logos/normalized/Beauty.png' },
+  { name: 'Luxe', logo: '/Images/Logos/normalized/Luxe.png' },
+  { name: 'Divine', logo: '/Images/Logos/normalized/Divine.png' },
+  { name: 'Paws', logo: '/Images/Logos/normalized/Paws.png' },
+  { name: 'Play', logo: '/Images/Logos/normalized/Play.png' },
+  { name: 'Classroom', logo: '/Images/Logos/normalized/Classroom.png' },
+];
+
+const EXTENDED_SERVICES = [
+  { name: 'BOGO Go', logo: '/Images/Logos/normalized/Go.png' },
+  { name: 'BOGO Life', logo: '/Images/Logos/normalized/Life.png' },
+  { name: 'BOGO Companion', logo: '/Images/Logos/normalized/Companion.png' },
+  { name: 'BOGO Partner', logo: '/Images/Logos/normalized/Partner.png' },
+  { name: 'BOGO Affairs', logo: '/Images/Logos/normalized/Affairs.png' },
+];
+
 export default function Ecosystem() {
   return (
     <section className={`band-navy ${styles.sectionEcosystem}`} id="ecosystem" aria-labelledby="ecosystem-title">
@@ -141,10 +169,10 @@ export default function Ecosystem() {
             <div className={`${styles.diagramNode} ${styles.nodeRoot}`}>
               <div className={`${styles.nodeBox} ${styles.rootBox}`}>
                 <Image
-                  src="/Images/Logos/Bogo.png"
+                  src="/Images/Logos/normalized/Bogo.png"
                   alt="BOGO Ecosystem"
-                  width={120}
-                  height={68}
+                  width={140}
+                  height={60}
                   className={styles.rootLogo}
                 />
                 <span className={styles.nodeCaption}>Core Ecosystem</span>
@@ -169,10 +197,19 @@ export default function Ecosystem() {
             <div className={`${styles.diagramTier} ${styles.tier1}`}>
               <div className={`${styles.nodeGroup} ${styles.groupFormats}`}>
                 <span className={styles.groupLabel}>Retail Formats</span>
-                <div className={styles.subnodesRow}>
-                  <span className={styles.subnodePill}>Square (Flagship)</span>
-                  <span className={styles.subnodePill}>Bazaar (Community)</span>
-                  <span className={styles.subnodePill}>Mini (Everyday)</span>
+                <div className={styles.formatsNodeRow}>
+                  {RETAIL_FORMATS.map((fmt) => (
+                    <div key={fmt.name} className={styles.formatLogoNode} title={`BOGO ${fmt.name} (${fmt.tag})`}>
+                      <Image
+                        src={fmt.logo}
+                        alt={`BOGO ${fmt.name}`}
+                        width={90}
+                        height={40}
+                        className={styles.diagramLogoImg}
+                      />
+                      <span className={styles.formatNodeBadge}>{fmt.tag}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
               <div className={`${styles.nodeGroup} ${styles.groupSupply}`}>
@@ -188,10 +225,16 @@ export default function Ecosystem() {
             <div className={`${styles.diagramTier} ${styles.tier2}`}>
               <span className={styles.groupLabel}>Eleven Category Verticals</span>
               <div className={styles.brandsNodeMatrix}>
-                {['Essentials', 'Daily', 'Farms', 'Superfoods', 'Health', 'Beauty', 'Luxe', 'Divine', 'Paws', 'Play', 'Classroom'].map((brand) => (
-                  <span key={brand} className={styles.brandLeafNode}>
-                    {brand}
-                  </span>
+                {CATEGORY_BRANDS.map((brand) => (
+                  <div key={brand.name} className={styles.brandLogoTile} title={`BOGO ${brand.name}`}>
+                    <Image
+                      src={brand.logo}
+                      alt={`BOGO ${brand.name}`}
+                      width={100}
+                      height={44}
+                      className={styles.diagramLogoImg}
+                    />
+                  </div>
                 ))}
               </div>
             </div>
@@ -200,10 +243,16 @@ export default function Ecosystem() {
             <div className={`${styles.diagramTier} ${styles.tier3}`}>
               <span className={styles.groupLabel}>Programs &amp; Extended Services</span>
               <div className={styles.servicesNodeRow}>
-                {['BOGO Go', 'BOGO Life', 'BOGO Companion', 'BOGO Partner', 'BOGO Affairs'].map((service) => (
-                  <span key={service} className={styles.serviceLeafNode}>
-                    {service}
-                  </span>
+                {EXTENDED_SERVICES.map((service) => (
+                  <div key={service.name} className={styles.serviceLogoTile} title={service.name}>
+                    <Image
+                      src={service.logo}
+                      alt={service.name}
+                      width={100}
+                      height={44}
+                      className={styles.diagramLogoImg}
+                    />
+                  </div>
                 ))}
               </div>
             </div>
