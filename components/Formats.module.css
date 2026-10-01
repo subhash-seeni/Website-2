@@ -60,23 +60,28 @@
 }
 
 .formatMetaBlock {
-  margin-top: 1.5rem;
+  margin-top: 1.75rem;
 }
 
 .formatLogoWrap {
-  height: 52px;
+  height: 84px;
   display: flex;
   align-items: center;
-  margin-bottom: 1.15rem;
+  margin-bottom: 1.25rem;
 }
 
 .formatLogoImg {
-  max-width: 170px;
-  max-height: 48px;
+  height: 76px;
+  max-height: 80px;
+  max-width: 280px;
   width: auto;
-  height: auto;
   object-fit: contain;
   object-position: left center;
+  transition: transform 200ms ease;
+}
+
+.formatColumn:hover .formatLogoImg {
+  transform: scale(1.02);
 }
 
 .formatCardName {

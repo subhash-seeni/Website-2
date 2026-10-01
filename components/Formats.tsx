@@ -68,8 +68,8 @@ export default function Formats() {
                   <Image
                     src={fmt.logo}
                     alt={`BOGO ${fmt.name} logo`}
-                    width={180}
-                    height={101}
+                    width={280}
+                    height={120}
                     className={styles.formatLogoImg}
                     loading="lazy"
                   />
