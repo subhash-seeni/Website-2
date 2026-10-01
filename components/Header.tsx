@@ -35,24 +35,24 @@ export default function Header() {
           <nav className={styles.desktopNav} aria-label="Main Navigation">
             <ul className={styles.navList}>
               <li>
-                <a href="/#ecosystem" className={styles.navLink}>
+                <Link href="/#ecosystem" className={styles.navLink}>
                   <span className={styles.navNum}>01</span> Ecosystem
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/#brands" className={styles.navLink}>
+                <Link href="/#brands" className={styles.navLink}>
                   <span className={styles.navNum}>02</span> Brands
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/#formats" className={styles.navLink}>
+                <Link href="/#formats" className={styles.navLink}>
                   <span className={styles.navNum}>03</span> Formats
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/#technology" className={styles.navLink}>
+                <Link href="/#technology" className={styles.navLink}>
                   <span className={styles.navNum}>04</span> Technology
-                </a>
+                </Link>
               </li>
             </ul>
           </nav>
