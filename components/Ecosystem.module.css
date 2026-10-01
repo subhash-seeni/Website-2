@@ -50,14 +50,28 @@
   padding-top: 1.75rem;
   display: flex;
   flex-direction: column;
+  transition: transform 200ms ease-out;
 }
 
-.pillarNum {
-  font-size: var(--text-xs);
-  font-weight: 600;
-  color: var(--accent-orange);
-  display: block;
-  margin-bottom: 0.75rem;
+.pillarIconWrap {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+  background: rgba(250, 248, 245, 0.05);
+  border: 1px solid rgba(250, 248, 245, 0.12);
+  border-radius: 6px;
+  color: var(--text-primary-dark);
+  transition: all 250ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pillarCard:hover .pillarIconWrap {
+  background: rgba(250, 248, 245, 0.09);
+  border-color: rgba(247, 134, 52, 0.5);
+  color: #ffffff;
+  transform: translateY(-2px);
 }
 
 .pillarName {
