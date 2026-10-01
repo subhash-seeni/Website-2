@@ -3,11 +3,19 @@
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 50;
+  z-index: 100;
   background: rgba(250, 248, 245, 0.94);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--border-light);
-  padding: 1rem 0;
+  padding: 0.85rem 0;
+  transition: background-color 250ms ease, border-color 250ms ease;
+}
+
+/* Light-on-navy recoloring when overlay menu is active */
+.headerOverlayActive {
+  background: rgba(11, 25, 44, 0.96);
+  backdrop-filter: blur(12px);
+  border-bottom-color: rgba(250, 248, 245, 0.15);
 }
 
 .headerContainer {
@@ -19,13 +27,36 @@
 .headerLogoLink {
   display: flex;
   align-items: center;
-  min-height: var(--tap-target);
+  min-height: 44px;
 }
 
 .headerLogo {
   width: 110px;
   height: auto;
   display: block;
+  transition: filter 250ms ease;
+}
+
+.headerOverlayActive .headerLogo {
+  filter: brightness(0) invert(1);
+}
+
+.headerRight {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+/* Desktop Navigation (hidden below 1024px) */
+.desktopNav {
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 1023px) {
+  .desktopNav {
+    display: none;
+  }
 }
 
 .navList {
@@ -33,6 +64,8 @@
   align-items: center;
   gap: 2rem;
   list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .navLink {
@@ -40,7 +73,7 @@
   font-weight: 500;
   color: var(--text-secondary-light);
   text-decoration: none;
-  min-height: var(--tap-target);
+  min-height: 44px;
   display: inline-flex;
   align-items: center;
   transition: color 150ms ease-out;
@@ -50,6 +83,14 @@
   color: var(--text-primary-light);
 }
 
+.headerOverlayActive .navLink {
+  color: rgba(250, 248, 245, 0.8);
+}
+
+.headerOverlayActive .navLink:hover {
+  color: #FFFFFF;
+}
+
 .navNum {
   font-size: var(--text-xs);
   color: var(--accent-orange);
@@ -57,29 +98,123 @@
   font-weight: 600;
 }
 
+/* Actions Wrap: CTA button & Menu Toggle */
+.actionsWrap {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
 .navCta {
   font-size: var(--text-sm);
-  font-weight: 500;
-  padding: 0.5rem 1.25rem;
+  font-weight: 600;
+  padding: 0.55rem 1.25rem;
   background: var(--bg-navy);
   color: var(--text-primary-dark);
-  border-radius: 2px;
+  border-radius: 4px;
   text-decoration: none;
-  min-height: var(--tap-target);
+  min-height: 44px;
   display: inline-flex;
   align-items: center;
-  transition: opacity 150ms ease-out;
+  justify-content: center;
+  transition: opacity 150ms ease-out, background-color 250ms ease, color 250ms ease;
 }
 
 .navCta:hover {
-  opacity: 0.85;
+  opacity: 0.9;
 }
 
-@media (max-width: 860px) {
-  .navList {
-    gap: 1rem;
-  }
-  .navLink {
+.headerOverlayActive .navCta {
+  background: #FAF8F5;
+  color: #0B192C;
+}
+
+.headerOverlayActive .navCta:hover {
+  background: #FFFFFF;
+}
+
+/* Hamburger / Close Toggle Button */
+.menuToggleBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.5rem 0.85rem;
+  min-height: 44px;
+  min-width: 44px;
+  background: transparent;
+  border: 1px solid var(--border-light);
+  border-radius: 4px;
+  color: var(--text-primary-light);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  transition: all 200ms ease;
+}
+
+.menuToggleBtn:hover {
+  border-color: var(--text-primary-light);
+  background: rgba(11, 25, 44, 0.04);
+}
+
+.menuToggleBtn:focus-visible {
+  outline: 2px solid var(--accent-orange);
+  outline-offset: 2px;
+}
+
+.headerOverlayActive .menuToggleBtn {
+  border-color: rgba(250, 248, 245, 0.3);
+  color: #FAF8F5;
+}
+
+.headerOverlayActive .menuToggleBtn:hover {
+  border-color: #FAF8F5;
+  background: rgba(250, 248, 245, 0.1);
+}
+
+/* Two Thin Lines Morphing into an X (~300ms) */
+.hamburgerIcon {
+  width: 20px;
+  height: 14px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.line {
+  display: block;
+  width: 100%;
+  height: 1.5px;
+  background-color: currentColor;
+  transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1), opacity 300ms ease;
+  transform-origin: center;
+}
+
+.menuToggleOpen .line1 {
+  transform: translateY(6.25px) rotate(45deg);
+}
+
+.menuToggleOpen .line2 {
+  transform: translateY(-6.25px) rotate(-45deg);
+}
+
+.menuBtnLabel {
+  display: inline-block;
+  user-select: none;
+}
+
+@media (max-width: 640px) {
+  .menuBtnLabel {
     display: none;
+  }
+  .menuToggleBtn {
+    padding: 0.5rem;
+    justify-content: center;
+  }
+  .navCta {
+    padding: 0.5rem 0.85rem;
+    font-size: 0.8125rem;
   }
 }

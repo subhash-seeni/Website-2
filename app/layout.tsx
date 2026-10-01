@@ -1,6 +1,11 @@
 import type { Metadata } from 'next';
 import { Plus_Jakarta_Sans } from 'next/font/google';
 import './globals.css';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
+import MotionController from '@/components/MotionController';
+import { NavProvider } from '@/components/NavContext';
+import NavOverlay from '@/components/NavOverlay';
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ['latin'],
@@ -11,10 +16,10 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 
 export const metadata: Metadata = {
   metadataBase: new URL('http://localhost:3000'),
-  title: 'BOGO — Building India\'s Next Retail Ecosystem (Investor Overview)',
+  title: "BOGO — Building India's Next Retail Ecosystem (Investor Overview)",
   description: 'Where brands, technology and experiences come together. A comprehensive ecosystem overview for partners and institutional investors.',
   openGraph: {
-    title: 'BOGO — Building India\'s Next Retail Ecosystem',
+    title: "BOGO — Building India's Next Retail Ecosystem",
     description: 'Where brands, technology and experiences come together.',
     images: ['/Images/Outlet images/Square.png'],
   },
@@ -22,10 +27,6 @@ export const metadata: Metadata = {
     icon: '/Images/Logos/Bogo.png',
   },
 };
-
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
-import MotionController from '@/components/MotionController';
 
 export default function RootLayout({
   children,
@@ -39,13 +40,16 @@ export default function RootLayout({
         <a href="#main-content" className="skip-link">
           Skip to main content
         </a>
-        <div id="smooth-wrapper">
-          <div id="smooth-content">
-            <Header />
-            {children}
-            <Footer />
+        <NavProvider>
+          <div id="smooth-wrapper">
+            <div id="smooth-content">
+              <Header />
+              <NavOverlay />
+              {children}
+              <Footer />
+            </div>
           </div>
-        </div>
+        </NavProvider>
       </body>
     </html>
   );
