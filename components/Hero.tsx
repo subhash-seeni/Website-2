@@ -25,7 +25,7 @@ export default function Hero() {
             <div>
               <div className={styles.heroEyebrowTag}>
                 <span className={styles.eyebrowDot} />
-                <span>Strategic Narrative</span>
+                <span>One Connected Vision</span>
               </div>
 
               <h1 className={styles.heroHeadline}>
