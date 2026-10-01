@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import Image from 'next/image';
 import styles from './Technology.module.css';
 
 interface TechPhase {
@@ -9,8 +8,6 @@ interface TechPhase {
   num: string;
   name: string;
   desc: string;
-  image: string | null;
-  caption?: string;
 }
 
 const TECH_PHASES: TechPhase[] = [
@@ -19,44 +16,36 @@ const TECH_PHASES: TechPhase[] = [
     num: '01',
     name: 'Purchase History',
     desc: 'A connected shopping history that helps customers understand their purchases, track spending, and plan future shopping with greater convenience.',
-    image: '/Images/Technology section/1 Know .webp',
-    caption: 'Concept visualisation — Connected customer shopping history & analytics',
   },
   {
     id: 'phase-02',
     num: '02',
     name: 'Smart Basket',
     desc: 'An intelligent basket that automatically tracks selected products while connecting shopping activity with the BOGO app and purchase history.',
-    image: null,
   },
   {
     id: 'phase-03',
     num: '03',
     name: 'Concierge Service',
     desc: 'Customers can browse and pre-order from home, allowing them to arrive at the store and simply collect their prepared purchases.',
-    image: null,
   },
   {
     id: 'phase-04',
     num: '04',
     name: 'Smart Trolley',
     desc: 'An intelligent trolley transforms the in-store experience with assisted shopping, personalised services, and greater convenience throughout the customer journey.',
-    image: '/Images/Technology section/2 Assist .webp',
-    caption: 'Concept visualisation — Interactive smart trolley navigation and checkout screen',
   },
   {
     id: 'phase-05',
     num: '05',
     name: 'Home Delivery',
     desc: 'Customers can continue their shopping journey beyond the store with convenient home delivery, creating a seamless connection between retail and everyday life.',
-    image: null,
   },
   {
     id: 'phase-06',
     num: '06',
     name: 'Intelligent Product Discovery',
     desc: 'Customers can scan products to instantly access pricing, ingredients, nutritional information, origin, manufacturing details, and other insights to make informed purchasing decisions.',
-    image: null,
   },
 ];
 
@@ -140,23 +129,6 @@ export default function Technology() {
 
                 <h3 className={styles.phaseTitle}>{phase.name}</h3>
                 <p className={styles.phaseDescription}>{phase.desc}</p>
-
-                {phase.image && (
-                  <div className={styles.phaseMediaFrame}>
-                    <Image
-                      src={phase.image}
-                      alt={`Concept visualisation for ${phase.name}`}
-                      width={1920}
-                      height={1080}
-                      className={styles.phaseImg}
-                      loading="lazy"
-                      sizes="(max-width: 900px) 100vw, 65vw"
-                    />
-                  </div>
-                )}
-                {phase.caption && (
-                  <span className="concept-caption">{phase.caption}</span>
-                )}
               </article>
             ))}
           </div>
