@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import AppImage from './AppImage';
 import styles from './Formats.module.css';
 
 const FORMATS = [
@@ -51,7 +51,7 @@ export default function Formats() {
           {FORMATS.map((fmt) => (
             <article key={fmt.id} className={styles.formatColumn}>
               <div className={styles.formatImageFrame}>
-                <Image
+                <AppImage
                   src={fmt.image}
                   alt={`BOGO ${fmt.name} architectural render`}
                   width={1920}
@@ -65,7 +65,7 @@ export default function Formats() {
 
               <div className={styles.formatMetaBlock}>
                 <div className={styles.formatLogoWrap}>
-                  <Image
+                  <AppImage
                     src={fmt.logo}
                     alt={`BOGO ${fmt.name} logo`}
                     width={320}

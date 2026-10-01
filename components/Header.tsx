@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import Image from 'next/image';
+import AppImage from './AppImage';
 import Link from 'next/link';
 import { useNav } from './NavContext';
 import styles from './Header.module.css';
@@ -18,7 +18,7 @@ export default function Header() {
         
         {/* Left: Logo */}
         <Link href="/" className={styles.headerLogoLink} aria-label="BOGO Homepage">
-          <Image
+          <AppImage
             src="/Images/Logos/Bogo.png"
             alt="BOGO"
             width={140}

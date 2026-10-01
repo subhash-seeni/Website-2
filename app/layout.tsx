@@ -6,6 +6,7 @@ import Footer from '@/components/Footer';
 import MotionController from '@/components/MotionController';
 import { NavProvider } from '@/components/NavContext';
 import NavOverlay from '@/components/NavOverlay';
+import { assetPath } from '@/lib/assetPath';
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ['latin'],
@@ -21,10 +22,10 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'BOGO',
     description: 'Where brands, technology and experiences come together.',
-    images: ['/Images/Outlet images/Square.png'],
+    images: [assetPath('/Images/Outlet images/Square.png')],
   },
   icons: {
-    icon: '/Images/Logos/Bogo.png',
+    icon: assetPath('/Images/Logos/Bogo.png'),
   },
 };
 

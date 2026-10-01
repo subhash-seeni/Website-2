@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import AppImage from './AppImage';
 import styles from './Hero.module.css';
 
 export default function Hero() {
@@ -6,7 +6,7 @@ export default function Hero() {
     <section className={`band-light ${styles.sectionHero}`} id="hero" aria-label="Executive Introduction">
       {/* Full-bleed Hero Background SVG */}
       <div className={styles.heroBackgroundWrap} id="hero-bg" aria-hidden="true">
-        <Image
+        <AppImage
           src="/Images/Hero background.svg"
           alt=""
           fill

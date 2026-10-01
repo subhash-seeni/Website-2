@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useRef } from 'react';
-import Image from 'next/image';
+import AppImage from './AppImage';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import gsap from 'gsap';
@@ -86,7 +86,7 @@ export default function Footer() {
         <div className={styles.brandRow}>
           <div className={styles.brandInfo}>
             <Link href="#hero" className={styles.brandLogoLink} aria-label="BOGO - Back to top">
-              <Image
+              <AppImage
                 src="/Images/Logos/Bogo.png"
                 alt="BOGO"
                 width={130}

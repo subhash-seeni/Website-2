@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import AppImage from './AppImage';
 import styles from './Ecosystem.module.css';
 
 const PILLARS = [
@@ -171,7 +171,7 @@ export default function Ecosystem() {
             {/* Tier 0: Root */}
             <div className={`${styles.diagramNode} ${styles.nodeRoot}`}>
               <div className={`${styles.nodeBox} ${styles.rootBox}`}>
-                <Image
+                <AppImage
                   src="/Images/Logos/normalized/Bogo.png"
                   alt="BOGO Ecosystem"
                   width={150}
@@ -199,7 +199,7 @@ export default function Ecosystem() {
                 <div className={styles.formatsNodeRow}>
                   {RETAIL_FORMATS.map((fmt) => (
                     <div key={fmt.name} className={styles.formatLogoNode} title={`BOGO ${fmt.name}`}>
-                      <Image
+                      <AppImage
                         src={fmt.logo}
                         alt={`BOGO ${fmt.name}`}
                         width={140}
@@ -214,7 +214,7 @@ export default function Ecosystem() {
                 <span className={styles.groupLabel}>Supply &amp; Distribution</span>
                 <div className={styles.supplyNodeRow}>
                   <div className={styles.formatLogoNode} title="BOGO Go">
-                    <Image
+                    <AppImage
                       src="/Images/Logos/normalized/Go.png"
                       alt="BOGO Go"
                       width={140}
@@ -237,7 +237,7 @@ export default function Ecosystem() {
               <div className={styles.brandsNodeMatrix}>
                 {CATEGORY_BRANDS.map((brand) => (
                   <div key={brand.name} className={styles.brandLogoTile} title={`BOGO ${brand.name}`}>
-                    <Image
+                    <AppImage
                       src={brand.logo}
                       alt={`BOGO ${brand.name}`}
                       width={140}
@@ -260,7 +260,7 @@ export default function Ecosystem() {
               <div className={styles.servicesNodeRow}>
                 {EXTENDED_SERVICES.map((service) => (
                   <div key={service.name} className={styles.serviceLogoTile} title={service.name}>
-                    <Image
+                    <AppImage
                       src={service.logo}
                       alt={service.name}
                       width={140}

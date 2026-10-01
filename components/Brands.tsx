@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Image from 'next/image';
+import AppImage from './AppImage';
 import { BRANDS_DATA, type BrandData } from '@/lib/brands';
 import styles from './Brands.module.css';
 
@@ -66,7 +66,7 @@ export default function Brands() {
               </span>
               
               <div className={styles.brandLogoDisplay}>
-                <Image
+                <AppImage
                   src={activeBrand.logo}
                   alt={`BOGO ${activeBrand.name} logo`}
                   width={220}
@@ -140,7 +140,7 @@ export default function Brands() {
           >
             {/* Top Image Wrap */}
             <div className={`${styles.visualImageWrap} ${isFading ? styles.imageFading : ''}`}>
-              <Image
+              <AppImage
                 src={displayedBrand.image}
                 alt={`BOGO ${displayedBrand.name} interior retail space`}
                 width={1920}
