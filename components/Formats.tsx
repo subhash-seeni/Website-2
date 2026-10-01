@@ -68,8 +68,8 @@ export default function Formats() {
                   <AppImage
                     src={fmt.logo}
                     alt={`BOGO ${fmt.name} logo`}
-                    width={320}
-                    height={130}
+                    width={240}
+                    height={80}
                     className={`${styles.formatLogoImg} ${fmt.id === 'mini' ? styles.formatLogoImgMini : ''}`}
                     loading="lazy"
                   />

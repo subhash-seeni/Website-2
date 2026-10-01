@@ -64,16 +64,16 @@
 }
 
 .formatLogoWrap {
-  height: 108px;
+  height: 72px;
   display: flex;
   align-items: center;
-  margin-bottom: 1.35rem;
+  margin-bottom: 1.15rem;
 }
 
 .formatLogoImg {
-  height: 94px;
-  max-height: 98px;
-  max-width: 310px;
+  height: 58px;
+  max-height: 62px;
+  max-width: 220px;
   width: auto;
   object-fit: contain;
   object-position: left center;
@@ -81,8 +81,8 @@
 }
 
 .formatLogoImgMini {
-  height: 102px;
-  max-height: 106px;
+  height: 64px;
+  max-height: 66px;
 }
 
 .formatColumn:hover .formatLogoImg {
