@@ -26,8 +26,8 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: calc(72px + 2rem) 3.5rem 1.75rem;
-  max-width: 1560px;
+  padding: calc(72px + 1.75rem) 4rem 2rem;
+  max-width: 1600px;
   margin: 0 auto;
   width: 100%;
   box-sizing: border-box;
@@ -35,51 +35,51 @@
 
 @media (max-width: 1280px) {
   .overlayInner {
-    padding: calc(72px + 1.5rem) 2.5rem 1.5rem;
+    padding: calc(72px + 1.25rem) 2.5rem 1.5rem;
   }
 }
 
 @media (max-width: 768px) {
   .overlayInner {
-    padding: calc(64px + 1.25rem) 1.5rem 1.25rem;
+    padding: calc(64px + 1rem) 1.5rem 1.25rem;
   }
 }
 
-/* Vertically Centered Main Container */
+/* Main Container — Aligned to Top, Naturally Spread Out */
 .mainContainer {
   flex: 1;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   width: 100%;
-  padding: 1rem 0;
+  padding: 1.25rem 0 0;
 }
 
-/* Desktop Columns Grid — 6 Columns, Text Only */
+/* Desktop Columns Grid — Generous Spacing Across Viewport */
 .columnsGrid {
   display: grid;
-  grid-template-columns: 1fr 1.65fr 1fr 1fr 1fr 1fr;
-  gap: 2.5rem;
+  grid-template-columns: 1fr 1.6fr 1fr 1fr 1fr 1fr;
+  gap: 3.25rem;
   width: 100%;
   align-items: start;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1280px) {
   .columnsGrid {
-    gap: 1.75rem;
+    gap: 2.25rem;
   }
 }
 
 @media (max-width: 1023px) and (min-width: 680px) {
   .columnsGrid {
     grid-template-columns: 1fr 1.4fr 1fr;
-    gap: 2rem 2.5rem;
+    gap: 2.25rem 2.75rem;
   }
 }
 
 @media (max-width: 679px) {
   .columnsGrid {
     grid-template-columns: 1fr 1fr;
-    gap: 1.5rem 1.25rem;
+    gap: 1.75rem 1.25rem;
   }
 }
 
@@ -96,7 +96,7 @@
 .brandsSubGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1.25rem;
+  gap: 1.75rem;
 }
 
 @media (max-width: 679px) {
@@ -108,30 +108,30 @@
 
 /* Group Headers & Typography Hierarchy */
 .groupHeader {
-  margin-bottom: 0.65rem;
+  margin-bottom: 0.85rem;
 }
 
 .groupNum {
-  font-size: 0.75rem;
+  font-size: 0.8125rem;
   font-weight: 700;
   color: var(--accent-orange, #EB6A3B);
   letter-spacing: 0.1em;
   display: block;
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.45rem;
 }
 
 .groupHairline {
   width: 100%;
   height: 1px;
-  background-color: rgba(250, 248, 245, 0.15);
-  margin-bottom: 0.65rem;
+  background-color: rgba(250, 248, 245, 0.18);
+  margin-bottom: 0.75rem;
 }
 
 .groupTitle {
   font-family: var(--font-serif, Georgia, serif);
-  font-size: 1.35rem;
+  font-size: 1.5rem;
   font-weight: 400;
-  line-height: 1.2;
+  line-height: 1.22;
   color: #FAF8F5;
   margin: 0;
   letter-spacing: -0.01em;
@@ -139,7 +139,7 @@
 
 @media (max-width: 768px) {
   .groupTitle {
-    font-size: 1.15rem;
+    font-size: 1.25rem;
   }
 }
 
@@ -164,23 +164,23 @@
 }
 
 .groupBlockStacked {
-  margin-top: 1.35rem;
+  margin-top: 1.75rem;
 }
 
 @media (max-width: 768px) {
   .groupBlockStacked {
-    margin-top: 1.15rem;
+    margin-top: 1.35rem;
   }
 }
 
-/* Links List */
+/* Links List with Generous Vertical Spacing */
 .linksList {
   list-style: none;
   padding: 0;
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.15rem;
+  gap: 0.45rem;
 }
 
 .linkItem {
@@ -190,22 +190,22 @@
 
 .navLink {
   font-family: var(--font-sans, sans-serif);
-  font-size: 0.9375rem;
+  font-size: 1.0625rem;
   font-weight: 450;
-  color: rgba(250, 248, 245, 0.82);
+  color: rgba(250, 248, 245, 0.85);
   text-decoration: underline;
   text-decoration-color: transparent;
-  text-underline-offset: 3px;
+  text-underline-offset: 4px;
   transition: color 140ms ease, text-decoration-color 140ms ease;
-  padding: 0.15rem 0;
+  padding: 0.2rem 0;
   display: inline-block;
-  line-height: 1.35;
+  line-height: 1.45;
 }
 
 @media (max-width: 768px) {
   .navLink {
-    font-size: 0.875rem;
-    padding: 0.12rem 0;
+    font-size: 0.9375rem;
+    padding: 0.15rem 0;
   }
 }
 
