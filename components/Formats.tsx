@@ -68,9 +68,9 @@ export default function Formats() {
                   <Image
                     src={fmt.logo}
                     alt={`BOGO ${fmt.name} logo`}
-                    width={280}
-                    height={120}
-                    className={styles.formatLogoImg}
+                    width={320}
+                    height={130}
+                    className={`${styles.formatLogoImg} ${fmt.id === 'mini' ? styles.formatLogoImgMini : ''}`}
                     loading="lazy"
                   />
                 </div>

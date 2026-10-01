@@ -269,11 +269,16 @@ a:focus-visible {
 
 .format-logo-wrap {
   width: 100%;
-  max-width: 180px;
-  height: 64px;
+  max-width: 310px;
+  height: 108px;
   display: flex;
   align-items: center;
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.35rem;
+}
+
+.format-item .brand-logo {
+  max-height: 94px;
+  max-width: 310px;
 }
 
 .format-name {
