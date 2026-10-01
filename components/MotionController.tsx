@@ -61,16 +61,16 @@ export default function MotionController() {
         const heroTl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
         heroTl.fromTo(
-          '#hero-media',
-          { opacity: 0, scale: 0.94 },
-          { opacity: 1, scale: 1, duration: 1.1 }
+          '#hero-bg',
+          { opacity: 0, scale: 1.04 },
+          { opacity: 1, scale: 1, duration: 1.3, ease: 'power2.out' }
         );
 
         heroTl.fromTo(
           '#hero h1',
           { opacity: 0, y: 24 },
           { opacity: 1, y: 0, duration: 0.9 },
-          '-=0.8'
+          '-=1.0'
         );
 
         heroTl.fromTo(
@@ -81,14 +81,14 @@ export default function MotionController() {
         );
 
         if (isDesktop) {
-          gsap.to('#hero-media', {
+          gsap.to('#hero-bg', {
             scrollTrigger: {
               trigger: '#hero',
               start: 'top top',
               end: 'bottom top',
               scrub: 1.2,
             },
-            y: 35,
+            y: 50,
             ease: 'none',
           });
         }
