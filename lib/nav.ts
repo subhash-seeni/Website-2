@@ -89,12 +89,12 @@ export const NAV_GROUPS: NavGroup[] = [
       col1: SITEMAP.filter(
         (item) =>
           item.group === 'Brands' &&
-          ['Essentials', 'Daily', 'Farms', 'Superfoods', 'Health', 'Beauty'].includes(item.label)
+          ['All Brands', 'Essentials', 'Daily', 'Farms', 'Superfoods', 'Health'].includes(item.label)
       ),
       col2: SITEMAP.filter(
         (item) =>
           item.group === 'Brands' &&
-          ['Luxe', 'Divine', 'Paws', 'Play', 'Classroom'].includes(item.label)
+          ['Beauty', 'Luxe', 'Divine', 'Paws', 'Play', 'Classroom'].includes(item.label)
       ),
     },
   },

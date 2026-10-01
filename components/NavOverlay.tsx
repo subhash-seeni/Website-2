@@ -1,13 +1,12 @@
 'use client';
 
 import React, { useEffect, useRef, useState } from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useNav } from './NavContext';
-import { NAV_GROUPS, LEGAL_LINKS, SOCIAL_LINKS, type NavGroup, type SitemapItem } from '@/lib/nav';
+import { NAV_GROUPS, LEGAL_LINKS, SOCIAL_LINKS, type SitemapItem } from '@/lib/nav';
 import styles from './NavOverlay.module.css';
 
 export default function NavOverlay() {
@@ -16,16 +15,15 @@ export default function NavOverlay() {
   const overlayRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const [isAnimating, setIsAnimating] = useState(false);
-  const [openAccordions, setOpenAccordions] = useState<Record<string, boolean>>({
-    company: true, // first group open by default on mobile
-  });
 
-  const toggleAccordion = (groupId: string) => {
-    setOpenAccordions((prev) => ({
-      ...prev,
-      [groupId]: !prev[groupId],
-    }));
-  };
+  // Group lookups from navigation config
+  const companyGroup = NAV_GROUPS.find((g) => g.id === 'company')!;
+  const brandsGroup = NAV_GROUPS.find((g) => g.id === 'brands')!;
+  const formatsGroup = NAV_GROUPS.find((g) => g.id === 'formats')!;
+  const technologyGroup = NAV_GROUPS.find((g) => g.id === 'technology')!;
+  const distributionGroup = NAV_GROUPS.find((g) => g.id === 'distribution')!;
+  const programsGroup = NAV_GROUPS.find((g) => g.id === 'programs')!;
+  const connectGroup = NAV_GROUPS.find((g) => g.id === 'connect')!;
 
   // Open/Close Animations and Scroll Lock
   useEffect(() => {
@@ -47,13 +45,13 @@ export default function NavOverlay() {
       }
 
       if (prefersReducedMotion) {
-        gsap.set(overlay, { clipPath: 'none', opacity: 1, display: 'block' });
+        gsap.set(overlay, { clipPath: 'none', opacity: 1, display: 'flex' });
         setIsAnimating(false);
         return;
       }
 
       // Restrained opening wipe: ~700ms, expo.out
-      gsap.set(overlay, { display: 'block' });
+      gsap.set(overlay, { display: 'flex' });
       const tl = gsap.timeline({
         onComplete: () => setIsAnimating(false),
       });
@@ -61,16 +59,16 @@ export default function NavOverlay() {
       tl.fromTo(
         overlay,
         { clipPath: 'polygon(0 0, 100% 0, 100% 0, 0 0)' },
-        { clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)', duration: 0.7, ease: 'expo.out' }
+        { clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)', duration: 0.65, ease: 'expo.out' }
       );
 
       const cols = overlay.querySelectorAll(`.${styles.navGroupCol}`);
       if (cols.length > 0) {
         tl.fromTo(
           cols,
-          { opacity: 0, y: 22 },
-          { opacity: 1, y: 0, duration: 0.45, ease: 'power2.out', stagger: 0.04 },
-          '-=0.45'
+          { opacity: 0, y: 16 },
+          { opacity: 1, y: 0, duration: 0.4, ease: 'power2.out', stagger: 0.03 },
+          '-=0.4'
         );
       }
     } else {
@@ -93,7 +91,7 @@ export default function NavOverlay() {
       setIsAnimating(true);
       gsap.to(overlay, {
         clipPath: 'polygon(0 0, 100% 0, 100% 0, 0 0)',
-        duration: 0.4,
+        duration: 0.35,
         ease: 'power3.inOut',
         onComplete: () => {
           gsap.set(overlay, { display: 'none' });
@@ -120,7 +118,7 @@ export default function NavOverlay() {
 
       if (e.key === 'Tab') {
         const focusableElements = overlay.querySelectorAll<HTMLElement>(
-          'a[href], button:not([disabled]), input:not([disabled]), textarea:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])'
+          'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
         );
         if (focusableElements.length === 0) return;
 
@@ -139,7 +137,7 @@ export default function NavOverlay() {
 
     window.addEventListener('keydown', handleKeyDown);
 
-    // Initial focus on first interactive element or container
+    // Initial focus on first interactive element
     const initialFocus = overlay.querySelector<HTMLElement>('a, button');
     if (initialFocus) {
       initialFocus.focus();
@@ -164,17 +162,6 @@ export default function NavOverlay() {
           className={`${styles.navLink} ${active ? styles.navLinkActive : ''}`}
           aria-current={active ? 'page' : undefined}
         >
-          {link.logo && (
-            <span className={styles.linkLogoWrap} aria-hidden="true">
-              <Image
-                src={link.logo}
-                alt=""
-                width={24}
-                height={24}
-                className={styles.linkLogoImg}
-              />
-            </span>
-          )}
           <span className={styles.linkText}>{link.label}</span>
         </Link>
       </li>
@@ -193,138 +180,125 @@ export default function NavOverlay() {
     >
       <div className={styles.overlayInner} ref={contentRef}>
         
-        {/* Main Content Area */}
-        <div className={styles.mainGrid}>
-          
-          {/* Left Third Panel */}
-          <div className={styles.leftPanel}>
-            <div className={styles.leftBrandTop}>
-              <Link href="/" onClick={closeMenu} className={styles.leftLogoLink} aria-label="BOGO Homepage">
-                <Image
-                  src="/Images/Logos/Bogo.png"
-                  alt="BOGO"
-                  width={140}
-                  height={78}
-                  className={styles.leftLogoImg}
-                />
-              </Link>
-              <p className={styles.leftTagline}>One vision. Endless possibilities.</p>
-              <div className={styles.leftAction}>
-                <Link href="/contact" onClick={closeMenu} className={styles.getInTouchBtn}>
-                  Get in touch
+        {/* Main Columns Container (Text only, strong hierarchy) */}
+        <div className={styles.mainContainer}>
+          <div className={styles.columnsGrid}>
+            
+            {/* 01 Company */}
+            <div className={styles.navGroupCol}>
+              <div className={styles.groupHeader}>
+                <span className={styles.groupNum}>{companyGroup.num}</span>
+                <div className={styles.groupHairline} aria-hidden="true" />
+                <h2 className={styles.groupTitle}>{companyGroup.title}</h2>
+              </div>
+              <ul className={styles.linksList}>
+                {companyGroup.links.map(renderLinkItem)}
+              </ul>
+            </div>
+
+            {/* 02 Brands */}
+            <div className={`${styles.navGroupCol} ${styles.brandsCol}`}>
+              <div className={styles.groupHeader}>
+                <span className={styles.groupNum}>{brandsGroup.num}</span>
+                <div className={styles.groupHairline} aria-hidden="true" />
+                <Link
+                  href={brandsGroup.indexRoute!}
+                  onClick={closeMenu}
+                  className={styles.groupTitleLink}
+                  aria-current={isCurrent(brandsGroup.indexRoute!) ? 'page' : undefined}
+                >
+                  <h2 className={styles.groupTitle}>{brandsGroup.title}</h2>
                 </Link>
               </div>
-            </div>
-
-            <div className={styles.leftVisualFrame}>
-              <div className={styles.visualImgWrap}>
-                <Image
-                  src="/Images/Outlet images/Square.png"
-                  alt="BOGO Square Flagship Exterior"
-                  width={640}
-                  height={400}
-                  className={styles.visualImage}
-                />
+              <div className={styles.brandsSubGrid}>
+                <ul className={styles.linksList}>
+                  {brandsGroup.subColumns?.col1.map(renderLinkItem)}
+                </ul>
+                <ul className={styles.linksList}>
+                  {brandsGroup.subColumns?.col2.map(renderLinkItem)}
+                </ul>
               </div>
-              <span className={styles.visualCaption}>Concept visualisation</span>
             </div>
-          </div>
 
-          {/* Right Two-Thirds Panel: Desktop Grid / Mobile Accordions */}
-          <div className={styles.rightPanel}>
-            
-            {/* Desktop Columns Grid */}
-            <div className={styles.desktopGrid}>
-              {NAV_GROUPS.map((group) => (
-                <div key={group.id} className={styles.navGroupCol}>
-                  <div className={styles.groupHeader}>
-                    <span className={styles.groupNum}>{group.num}</span>
-                    <div className={styles.groupHairline} aria-hidden="true" />
-                    {group.indexRoute ? (
-                      <Link
-                        href={group.indexRoute}
-                        onClick={closeMenu}
-                        className={styles.groupTitleLink}
-                        aria-current={isCurrent(group.indexRoute) ? 'page' : undefined}
-                      >
-                        <h2 className={styles.groupTitle}>{group.title}</h2>
-                      </Link>
-                    ) : (
-                      <h2 className={styles.groupTitle}>{group.title}</h2>
-                    )}
-                  </div>
+            {/* 03 Formats */}
+            <div className={styles.navGroupCol}>
+              <div className={styles.groupHeader}>
+                <span className={styles.groupNum}>{formatsGroup.num}</span>
+                <div className={styles.groupHairline} aria-hidden="true" />
+                <Link
+                  href={formatsGroup.indexRoute!}
+                  onClick={closeMenu}
+                  className={styles.groupTitleLink}
+                  aria-current={isCurrent(formatsGroup.indexRoute!) ? 'page' : undefined}
+                >
+                  <h2 className={styles.groupTitle}>{formatsGroup.title}</h2>
+                </Link>
+              </div>
+              <ul className={styles.linksList}>
+                {formatsGroup.links.map(renderLinkItem)}
+              </ul>
+            </div>
 
-                  {group.subColumns ? (
-                    <div className={styles.subColumnsGrid}>
-                      <ul className={styles.linksList}>
-                        {group.links.filter((l) => l.route === group.indexRoute).map(renderLinkItem)}
-                        {group.subColumns.col1.map(renderLinkItem)}
-                      </ul>
-                      <ul className={styles.linksList}>
-                        {group.subColumns.col2.map(renderLinkItem)}
-                      </ul>
-                    </div>
-                  ) : (
-                    <ul className={styles.linksList}>
-                      {group.links.map(renderLinkItem)}
-                    </ul>
-                  )}
+            {/* 04 Technology & 05 Distribution (stacked to balance vertical height) */}
+            <div className={styles.navGroupCol}>
+              <div className={styles.groupBlock}>
+                <div className={styles.groupHeader}>
+                  <span className={styles.groupNum}>{technologyGroup.num}</span>
+                  <div className={styles.groupHairline} aria-hidden="true" />
+                  <Link
+                    href={technologyGroup.indexRoute!}
+                    onClick={closeMenu}
+                    className={styles.groupTitleLink}
+                    aria-current={isCurrent(technologyGroup.indexRoute!) ? 'page' : undefined}
+                  >
+                    <h2 className={styles.groupTitle}>{technologyGroup.title}</h2>
+                  </Link>
                 </div>
-              ))}
+                <ul className={styles.linksList}>
+                  {technologyGroup.links.map(renderLinkItem)}
+                </ul>
+              </div>
+
+              <div className={`${styles.groupBlock} ${styles.groupBlockStacked}`}>
+                <div className={styles.groupHeader}>
+                  <span className={styles.groupNum}>{distributionGroup.num}</span>
+                  <div className={styles.groupHairline} aria-hidden="true" />
+                  <h2 className={styles.groupTitle}>{distributionGroup.title}</h2>
+                </div>
+                <ul className={styles.linksList}>
+                  {distributionGroup.links.map(renderLinkItem)}
+                </ul>
+              </div>
             </div>
 
-            {/* Mobile Accordions List */}
-            <div className={styles.mobileAccordions}>
-              {NAV_GROUPS.map((group) => {
-                const isOpenAccordion = !!openAccordions[group.id];
-                return (
-                  <div key={group.id} className={styles.accordionItem}>
-                    <button
-                      type="button"
-                      className={styles.accordionHeader}
-                      onClick={() => toggleAccordion(group.id)}
-                      aria-expanded={isOpenAccordion}
-                    >
-                      <span className={styles.accordionHeaderLeft}>
-                        <span className={styles.groupNum}>{group.num}</span>
-                        <span className={styles.accordionTitle}>{group.title}</span>
-                      </span>
-                      <span className={styles.accordionIcon} aria-hidden="true">
-                        {isOpenAccordion ? '−' : '+'}
-                      </span>
-                    </button>
+            {/* 06 Programs */}
+            <div className={styles.navGroupCol}>
+              <div className={styles.groupHeader}>
+                <span className={styles.groupNum}>{programsGroup.num}</span>
+                <div className={styles.groupHairline} aria-hidden="true" />
+                <h2 className={styles.groupTitle}>{programsGroup.title}</h2>
+              </div>
+              <ul className={styles.linksList}>
+                {programsGroup.links.map(renderLinkItem)}
+              </ul>
+            </div>
 
-                    {isOpenAccordion && (
-                      <div className={styles.accordionBody}>
-                        {group.indexRoute && (
-                          <div className={styles.accordionIndexWrap}>
-                            <Link
-                              href={group.indexRoute}
-                              onClick={closeMenu}
-                              className={styles.accordionIndexLink}
-                              aria-current={isCurrent(group.indexRoute) ? 'page' : undefined}
-                            >
-                              All {group.title} &rarr;
-                            </Link>
-                          </div>
-                        )}
-                        <ul className={styles.mobileLinksList}>
-                          {group.links
-                            .filter((l) => l.route !== group.indexRoute)
-                            .map(renderLinkItem)}
-                        </ul>
-                      </div>
-                    )}
-                  </div>
-                );
-              })}
+            {/* 07 Connect */}
+            <div className={styles.navGroupCol}>
+              <div className={styles.groupHeader}>
+                <span className={styles.groupNum}>{connectGroup.num}</span>
+                <div className={styles.groupHairline} aria-hidden="true" />
+                <h2 className={styles.groupTitle}>{connectGroup.title}</h2>
+              </div>
+              <ul className={styles.linksList}>
+                {connectGroup.links.map(renderLinkItem)}
+              </ul>
             </div>
 
           </div>
-
         </div>
 
-        {/* Bottom Bar */}
+        {/* Bottom Bar: Legal & Social Info */}
         <div className={styles.bottomBar}>
           <div className={styles.bottomLeft}>
             <span className={styles.copyrightText}>&copy; {new Date().getFullYear()} BOGO</span>
