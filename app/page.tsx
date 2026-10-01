@@ -4,6 +4,7 @@ import Vision from '@/components/Vision';
 import Ecosystem from '@/components/Ecosystem';
 import Brands from '@/components/Brands';
 import Formats from '@/components/Formats';
+import Technology from '@/components/Technology';
 import Roadmap from '@/components/Roadmap';
 import Closing from '@/components/Closing';
 import Footer from '@/components/Footer';
@@ -20,6 +21,7 @@ export default function Home() {
         <Ecosystem />
         <Brands />
         <Formats />
+        <Technology />
         <Roadmap />
         <Closing />
       </main>

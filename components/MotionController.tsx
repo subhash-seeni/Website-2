@@ -31,7 +31,7 @@ export default function MotionController() {
     const mm = gsap.matchMedia();
 
     // -------------------------------------------------------------------------
-    // Desktop Viewports (>= 768px) and prefers-reduced-motion: no-preference
+    // Viewport & Preference Matching
     // -------------------------------------------------------------------------
     mm.add(
       {
@@ -40,7 +40,7 @@ export default function MotionController() {
         reduceMotion: '(prefers-reduced-motion: reduce)',
       },
       (context) => {
-        const { isDesktop, isMobile, reduceMotion } = context.conditions as {
+        const { isDesktop, reduceMotion } = context.conditions as {
           isDesktop: boolean;
           isMobile: boolean;
           reduceMotion: boolean;
@@ -54,18 +54,16 @@ export default function MotionController() {
 
         // =====================================================================
         // SECTION 1: HERO
-        // Slow curtain mask reveal on load, headline line reveal, scrub down on scroll
+        // Curtain reveal on load, headline line reveal, scrub down on scroll
         // =====================================================================
         const heroTl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
-        // Curtain reveal on image frame
         heroTl.fromTo(
           '#hero-media',
           { clipPath: 'inset(100% 0 0 0)', opacity: 0 },
           { clipPath: 'inset(0% 0 0 0)', opacity: 1, duration: 1.2 }
         );
 
-        // Headline reveal
         heroTl.fromTo(
           '#hero h1',
           { opacity: 0, y: 24 },
@@ -73,7 +71,6 @@ export default function MotionController() {
           '-=0.8'
         );
 
-        // Subline and CTA buttons
         heroTl.fromTo(
           ['#hero p', '#hero .heroActions', '#hero a'],
           { opacity: 0, y: 16 },
@@ -82,7 +79,6 @@ export default function MotionController() {
         );
 
         if (isDesktop) {
-          // Hero image scrub down to inset rounded frame
           gsap.to('#hero-media', {
             scrollTrigger: {
               trigger: '#hero',
@@ -119,7 +115,6 @@ export default function MotionController() {
           );
         }
 
-        // Supporting line fade in
         gsap.fromTo(
           '#vision p[class*="visionSupporting"]',
           { opacity: 0, y: 20 },
@@ -157,7 +152,6 @@ export default function MotionController() {
           }
         );
 
-        // SVG vectors drawing
         const vectors = gsap.utils.toArray<SVGPathElement>('#ecosystem svg path');
         vectors.forEach((v) => {
           try {
@@ -167,7 +161,7 @@ export default function MotionController() {
               strokeDashoffset: length,
             });
           } catch {
-            // Fallback for non-rendered SVGs
+            // Fallback
           }
         });
 
@@ -186,7 +180,6 @@ export default function MotionController() {
           });
         }
 
-        // Diagram tier nodes lighting up
         gsap.fromTo(
           '#ecosystem div[class*="diagramTier"]',
           { opacity: 0, y: 16 },
@@ -206,7 +199,6 @@ export default function MotionController() {
 
         // =====================================================================
         // SECTION 4: 03 BRANDS
-        // Staggered reveals and smooth interactive transitions
         // =====================================================================
         gsap.fromTo(
           '#brands-showcase',
@@ -248,7 +240,6 @@ export default function MotionController() {
           );
 
           if (isDesktop) {
-            // Subtle parallax scrub on images
             gsap.to('#formats img[class*="formatRenderImg"]', {
               y: -24,
               ease: 'none',
@@ -263,7 +254,125 @@ export default function MotionController() {
         }
 
         // =====================================================================
-        // SECTION 6: 05 ROADMAP
+        // SECTION 6: 05 TECHNOLOGY (Sticky Split & Phase Scroll-linked Track)
+        // =====================================================================
+        const phaseBlocks = gsap.utils.toArray<HTMLElement>('#tech-scroll-content article');
+        
+        // Phase blocks fade and rise
+        phaseBlocks.forEach((block, idx) => {
+          gsap.fromTo(
+            block,
+            { opacity: 0, y: 28 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.85,
+              ease: 'power3.out',
+              scrollTrigger: {
+                trigger: block,
+                start: 'top 82%',
+                toggleActions: 'play none none reverse',
+              },
+            }
+          );
+
+          // Reveal image frame with clip-path
+          const imgFrame = block.querySelector('div[class*="phaseMediaFrame"]');
+          if (imgFrame) {
+            gsap.fromTo(
+              imgFrame,
+              { clipPath: 'inset(100% 0 0 0)', opacity: 0 },
+              {
+                clipPath: 'inset(0% 0 0 0)',
+                opacity: 1,
+                duration: 1.0,
+                ease: 'expo.out',
+                scrollTrigger: {
+                  trigger: imgFrame,
+                  start: 'top 80%',
+                  toggleActions: 'play none none reverse',
+                },
+              }
+            );
+          }
+
+          // Desktop: Track which phase is active to highlight index
+          if (isDesktop) {
+            ScrollTrigger.create({
+              trigger: block,
+              start: 'top 52%',
+              end: 'bottom 48%',
+              onToggle: (self) => {
+                if (self.isActive) {
+                  document.querySelectorAll('button[id^="tech-nav-btn-"]').forEach((btn, bIdx) => {
+                    if (bIdx === idx) {
+                      btn.classList.add('isActive');
+                      // Find module class if hashed
+                      btn.setAttribute('aria-current', 'true');
+                    } else {
+                      btn.classList.remove('isActive');
+                      btn.setAttribute('aria-current', 'false');
+                    }
+                  });
+                }
+              },
+            });
+          }
+        });
+
+        // Vertical line fill scrub
+        if (isDesktop) {
+          gsap.fromTo(
+            '#tech-timeline-line',
+            { height: '0%' },
+            {
+              height: '100%',
+              ease: 'none',
+              scrollTrigger: {
+                trigger: '#tech-scroll-content',
+                start: 'top 45%',
+                end: 'bottom 55%',
+                scrub: 0.25,
+              },
+            }
+          );
+        }
+
+        // Closing statement line reveal
+        gsap.fromTo(
+          '#tech-closing h3',
+          { opacity: 0, y: 24 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.9,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: '#tech-closing',
+              start: 'top 80%',
+              toggleActions: 'play none none reverse',
+            },
+          }
+        );
+
+        gsap.fromTo(
+          '#tech-closing p',
+          { opacity: 0, y: 16 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: '#tech-closing',
+              start: 'top 75%',
+              toggleActions: 'play none none reverse',
+            },
+          }
+        );
+
+        // =====================================================================
+        // SECTION 7: 06 ROADMAP
         // Strategic timeline track line draw and phases sequential activation
         // =====================================================================
         gsap.fromTo(
@@ -298,27 +407,8 @@ export default function MotionController() {
           }
         );
 
-        // Tech phases grid reveal
-        gsap.fromTo(
-          '#roadmap div[class*="techCard"]',
-          { opacity: 0, y: 20 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.7,
-            stagger: 0.1,
-            ease: 'power3.out',
-            scrollTrigger: {
-              trigger: '#roadmap div[class*="techGrid"]',
-              start: 'top 75%',
-              toggleActions: 'play none none reverse',
-            },
-          }
-        );
-
         // =====================================================================
-        // SECTION 7: CLOSING
-        // Large statement slow line reveal
+        // SECTION 8: CLOSING
         // =====================================================================
         gsap.fromTo(
           '#closing h2',
@@ -357,7 +447,7 @@ export default function MotionController() {
     // Refresh ScrollTrigger after assets initialize
     const refreshTimer = setTimeout(() => {
       ScrollTrigger.refresh();
-    }, 500);
+    }, 600);
 
     window.addEventListener('load', () => {
       ScrollTrigger.refresh();
