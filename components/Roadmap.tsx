@@ -37,7 +37,7 @@ export default function Roadmap() {
       <div className="container">
         
         <div className="section-meta">
-          <span className="section-num">06</span>
+          <span className="section-num">05</span>
           <span>Strategic Roadmap</span>
         </div>
 

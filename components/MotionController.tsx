@@ -93,48 +93,25 @@ export default function MotionController() {
         }
 
         // =====================================================================
-        // SECTION 2: 01 VISION
-        // Word-by-word opacity scrub as user reads
+        // SECTION 2: 01 ECOSYSTEM (Deep Navy Band)
+        // Five pillars sequence + SVG Structure Diagram node-by-node vector draw
         // =====================================================================
-        const words = gsap.utils.toArray<HTMLElement>('#vision span[class*="visionWord"]');
-        if (words.length > 0) {
-          gsap.fromTo(
-            words,
-            { opacity: 0.22 },
-            {
-              opacity: 1,
-              stagger: 0.08,
-              ease: 'none',
-              scrollTrigger: {
-                trigger: '#vision',
-                start: 'top 70%',
-                end: 'center 40%',
-                scrub: 0.6,
-              },
-            }
-          );
-        }
-
         gsap.fromTo(
-          '#vision p[class*="visionSupporting"]',
-          { opacity: 0, y: 20 },
+          '#ecosystem h2, #ecosystem p[class*="ecosystemSubtitle"]',
+          { opacity: 0, y: 24 },
           {
             opacity: 1,
             y: 0,
-            duration: 0.8,
+            duration: 0.9,
+            stagger: 0.1,
             ease: 'power3.out',
             scrollTrigger: {
-              trigger: '#vision',
-              start: 'center 50%',
+              trigger: '#ecosystem',
+              start: 'top 75%',
               toggleActions: 'play none none reverse',
             },
           }
         );
-
-        // =====================================================================
-        // SECTION 3: 02 ECOSYSTEM
-        // Five pillars sequence + SVG Structure Diagram node-by-node vector draw
-        // =====================================================================
         gsap.fromTo(
           '#ecosystem div[class*="pillarCard"]',
           { opacity: 0, y: 24 },

@@ -18,12 +18,11 @@ export default function Header() {
         </Link>
         <nav aria-label="Investor Navigation">
           <ul className={styles.navList}>
-            <li><a href="#vision" className={styles.navLink}><span className={styles.navNum}>01</span> Vision</a></li>
-            <li><a href="#ecosystem" className={styles.navLink}><span className={styles.navNum}>02</span> Ecosystem</a></li>
-            <li><a href="#brands" className={styles.navLink}><span className={styles.navNum}>03</span> Brands</a></li>
-            <li><a href="#formats" className={styles.navLink}><span className={styles.navNum}>04</span> Formats</a></li>
-            <li><a href="#technology" className={styles.navLink}><span className={styles.navNum}>05</span> Technology</a></li>
-            <li><a href="#roadmap" className={styles.navLink}><span className={styles.navNum}>06</span> Roadmap</a></li>
+            <li><a href="#ecosystem" className={styles.navLink}><span className={styles.navNum}>01</span> Ecosystem</a></li>
+            <li><a href="#brands" className={styles.navLink}><span className={styles.navNum}>02</span> Brands</a></li>
+            <li><a href="#formats" className={styles.navLink}><span className={styles.navNum}>03</span> Formats</a></li>
+            <li><a href="#technology" className={styles.navLink}><span className={styles.navNum}>04</span> Technology</a></li>
+            <li><a href="#roadmap" className={styles.navLink}><span className={styles.navNum}>05</span> Roadmap</a></li>
             <li><a href="#closing" className={styles.navCta}>Contact</a></li>
           </ul>
         </nav>

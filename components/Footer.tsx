@@ -23,12 +23,11 @@ export default function Footer() {
           <div>
             <span className={styles.footerHeading}>Ecosystem</span>
             <ul className={styles.footerLinks}>
-              <li><a href="#vision" className={styles.footerLink}>01 Vision</a></li>
-              <li><a href="#ecosystem" className={styles.footerLink}>02 Ecosystem</a></li>
-              <li><a href="#brands" className={styles.footerLink}>03 Category Brands</a></li>
-              <li><a href="#formats" className={styles.footerLink}>04 Retail Formats</a></li>
-              <li><a href="#technology" className={styles.footerLink}>05 Technology</a></li>
-              <li><a href="#roadmap" className={styles.footerLink}>06 Strategic Roadmap</a></li>
+              <li><a href="#ecosystem" className={styles.footerLink}>01 Ecosystem</a></li>
+              <li><a href="#brands" className={styles.footerLink}>02 Category Brands</a></li>
+              <li><a href="#formats" className={styles.footerLink}>03 Retail Formats</a></li>
+              <li><a href="#technology" className={styles.footerLink}>04 Technology</a></li>
+              <li><a href="#roadmap" className={styles.footerLink}>05 Strategic Roadmap</a></li>
             </ul>
           </div>
 

@@ -1,6 +1,5 @@
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
-import Vision from '@/components/Vision';
 import Ecosystem from '@/components/Ecosystem';
 import Brands from '@/components/Brands';
 import Formats from '@/components/Formats';
@@ -17,7 +16,6 @@ export default function Home() {
       <Header />
       <main id="main-content">
         <Hero />
-        <Vision />
         <Ecosystem />
         <Brands />
         <Formats />

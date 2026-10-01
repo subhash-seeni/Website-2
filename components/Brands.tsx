@@ -118,7 +118,7 @@ export default function Brands() {
         </a>
 
         <div className="section-meta">
-          <span className="section-num">03</span>
+          <span className="section-num">02</span>
           <span>Category Brands</span>
         </div>
 

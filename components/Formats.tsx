@@ -34,7 +34,7 @@ export default function Formats() {
       <div className="container">
         
         <div className="section-meta">
-          <span className="section-num">04</span>
+          <span className="section-num">03</span>
           <span>Formats</span>
         </div>
 

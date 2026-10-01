@@ -31,11 +31,11 @@ const PILLARS = [
 
 export default function Ecosystem() {
   return (
-    <section className={`band-light ${styles.sectionEcosystem}`} id="ecosystem" aria-labelledby="ecosystem-title">
-      <div className={`container ${styles.ecosystemContainer}`}>
+    <section className={`band-navy ${styles.sectionEcosystem}`} id="ecosystem" aria-labelledby="ecosystem-title">
+      <div className="container">
         
         <div className="section-meta">
-          <span className="section-num">02</span>
+          <span className="section-num">01</span>
           <span>Ecosystem</span>
         </div>
 
@@ -59,9 +59,9 @@ export default function Ecosystem() {
           ))}
         </div>
 
-        <hr className={`hairline-light ${styles.ecosystemHairline}`} aria-hidden="true" />
+        <hr className={`hairline-dark ${styles.ecosystemHairline}`} aria-hidden="true" />
 
-        {/* Signature Diagram: Architectural Hierarchy */}
+        {/* Signature Diagram: Architectural Hierarchy on Navy */}
         <div className={styles.diagramWrapper} aria-label="Ecosystem Structural Diagram">
           <div className={styles.diagramHeader}>
             <span className={styles.diagramTag}>Structure Diagram</span>
@@ -86,16 +86,16 @@ export default function Ecosystem() {
 
             {/* SVG Connecting Vectors Tier 0 -> Tier 1 */}
             <svg className={styles.diagramLines} viewBox="0 0 1000 600" fill="none" preserveAspectRatio="xMidYMid meet">
-              <path className={`${styles.diagramVector} v-trunk`} d="M 500,45 L 500,95" stroke="#0e294e" strokeWidth="1.5" />
-              <path className={`${styles.diagramVector} v-branch-t1`} d="M 280,95 L 720,95" stroke="#0e294e" strokeWidth="1.5" />
-              <path className={`${styles.diagramVector} v-t1-left`} d="M 280,95 L 280,135" stroke="#0e294e" strokeWidth="1.5" />
-              <path className={`${styles.diagramVector} v-t1-right`} d="M 720,95 L 720,135" stroke="#0e294e" strokeWidth="1.5" />
+              <path className={`${styles.diagramVector} v-trunk`} d="M 500,45 L 500,95" stroke="rgba(250, 248, 245, 0.3)" strokeWidth="1.5" />
+              <path className={`${styles.diagramVector} v-branch-t1`} d="M 280,95 L 720,95" stroke="rgba(250, 248, 245, 0.3)" strokeWidth="1.5" />
+              <path className={`${styles.diagramVector} v-t1-left`} d="M 280,95 L 280,135" stroke="rgba(250, 248, 245, 0.3)" strokeWidth="1.5" />
+              <path className={`${styles.diagramVector} v-t1-right`} d="M 720,95 L 720,135" stroke="rgba(250, 248, 245, 0.3)" strokeWidth="1.5" />
 
-              <path className={`${styles.diagramVector} v-trunk-t2`} d="M 500,95 L 500,240" stroke="#0e294e" strokeWidth="1.5" />
-              <path className={`${styles.diagramVector} v-branch-t2`} d="M 120,240 L 880,240" stroke="#0e294e" strokeWidth="1.5" />
+              <path className={`${styles.diagramVector} v-trunk-t2`} d="M 500,95 L 500,240" stroke="rgba(250, 248, 245, 0.3)" strokeWidth="1.5" />
+              <path className={`${styles.diagramVector} v-branch-t2`} d="M 120,240 L 880,240" stroke="rgba(250, 248, 245, 0.3)" strokeWidth="1.5" />
 
-              <path className={`${styles.diagramVector} v-trunk-t3`} d="M 500,380 L 500,440" stroke="#0e294e" strokeWidth="1.5" />
-              <path className={`${styles.diagramVector} v-branch-t3`} d="M 200,440 L 800,440" stroke="#0e294e" strokeWidth="1.5" />
+              <path className={`${styles.diagramVector} v-trunk-t3`} d="M 500,380 L 500,440" stroke="rgba(250, 248, 245, 0.3)" strokeWidth="1.5" />
+              <path className={`${styles.diagramVector} v-branch-t3`} d="M 200,440 L 800,440" stroke="rgba(250, 248, 245, 0.3)" strokeWidth="1.5" />
             </svg>
 
             {/* Tier 1: Retail Formats & Supply */}

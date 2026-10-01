@@ -78,7 +78,7 @@ export default function Technology() {
         {/* Section Header */}
         <div className={styles.techIntroHeader}>
           <div className="section-meta">
-            <span className="section-num">05</span>
+            <span className="section-num">04</span>
             <span>Technology</span>
           </div>
 
