@@ -99,9 +99,9 @@ const PILLARS = [
 ];
 
 const RETAIL_FORMATS = [
-  { name: 'Square', tag: 'Flagship', logo: '/Images/Logos/normalized/Square.png' },
-  { name: 'Bazaar', tag: 'Community', logo: '/Images/Logos/normalized/Bazaar.png' },
-  { name: 'Mini', tag: 'Everyday', logo: '/Images/Logos/normalized/Mini.png' },
+  { name: 'Square', logo: '/Images/Logos/normalized/Square.png' },
+  { name: 'Bazaar', logo: '/Images/Logos/normalized/Bazaar.png' },
+  { name: 'Mini', logo: '/Images/Logos/normalized/Mini.png' },
 ];
 
 const CATEGORY_BRANDS = [
@@ -119,7 +119,6 @@ const CATEGORY_BRANDS = [
 ];
 
 const EXTENDED_SERVICES = [
-  { name: 'BOGO Go', logo: '/Images/Logos/normalized/Go.png' },
   { name: 'BOGO Life', logo: '/Images/Logos/normalized/Life.png' },
   { name: 'BOGO Companion', logo: '/Images/Logos/normalized/Companion.png' },
   { name: 'BOGO Partner', logo: '/Images/Logos/normalized/Partner.png' },
@@ -175,27 +174,23 @@ export default function Ecosystem() {
                 <Image
                   src="/Images/Logos/normalized/Bogo.png"
                   alt="BOGO Ecosystem"
-                  width={140}
-                  height={60}
+                  width={150}
+                  height={54}
                   className={styles.rootLogo}
                 />
                 <span className={styles.nodeCaption}>Core Ecosystem</span>
               </div>
             </div>
 
-            {/* SVG Connecting Vectors Tier 0 -> Tier 1 */}
-            <svg className={styles.diagramLines} viewBox="0 0 1000 600" fill="none" preserveAspectRatio="xMidYMid meet">
-              <path className={`${styles.diagramVector} v-trunk`} d="M 500,45 L 500,95" stroke="rgba(250, 248, 245, 0.3)" strokeWidth="1.5" />
-              <path className={`${styles.diagramVector} v-branch-t1`} d="M 280,95 L 720,95" stroke="rgba(250, 248, 245, 0.3)" strokeWidth="1.5" />
-              <path className={`${styles.diagramVector} v-t1-left`} d="M 280,95 L 280,135" stroke="rgba(250, 248, 245, 0.3)" strokeWidth="1.5" />
-              <path className={`${styles.diagramVector} v-t1-right`} d="M 720,95 L 720,135" stroke="rgba(250, 248, 245, 0.3)" strokeWidth="1.5" />
-
-              <path className={`${styles.diagramVector} v-trunk-t2`} d="M 500,95 L 500,240" stroke="rgba(250, 248, 245, 0.3)" strokeWidth="1.5" />
-              <path className={`${styles.diagramVector} v-branch-t2`} d="M 120,240 L 880,240" stroke="rgba(250, 248, 245, 0.3)" strokeWidth="1.5" />
-
-              <path className={`${styles.diagramVector} v-trunk-t3`} d="M 500,380 L 500,440" stroke="rgba(250, 248, 245, 0.3)" strokeWidth="1.5" />
-              <path className={`${styles.diagramVector} v-branch-t3`} d="M 200,440 L 800,440" stroke="rgba(250, 248, 245, 0.3)" strokeWidth="1.5" />
-            </svg>
+            {/* Tree Branch: Root to Tier 1 */}
+            <div className={styles.branchRootToTier1} aria-hidden="true">
+              <div className={styles.stemRootDown} />
+              <div className={styles.crossbarTier1} />
+              <div className={styles.stemsTier1Down}>
+                <div className={styles.stemCol} />
+                <div className={styles.stemCol} />
+              </div>
+            </div>
 
             {/* Tier 1: Retail Formats & Supply */}
             <div className={`${styles.diagramTier} ${styles.tier1}`}>
@@ -203,26 +198,37 @@ export default function Ecosystem() {
                 <span className={styles.groupLabel}>Retail Formats</span>
                 <div className={styles.formatsNodeRow}>
                   {RETAIL_FORMATS.map((fmt) => (
-                    <div key={fmt.name} className={styles.formatLogoNode} title={`BOGO ${fmt.name} (${fmt.tag})`}>
+                    <div key={fmt.name} className={styles.formatLogoNode} title={`BOGO ${fmt.name}`}>
                       <Image
                         src={fmt.logo}
                         alt={`BOGO ${fmt.name}`}
-                        width={90}
-                        height={40}
+                        width={140}
+                        height={56}
                         className={styles.diagramLogoImg}
                       />
-                      <span className={styles.formatNodeBadge}>{fmt.tag}</span>
                     </div>
                   ))}
                 </div>
               </div>
               <div className={`${styles.nodeGroup} ${styles.groupSupply}`}>
                 <span className={styles.groupLabel}>Supply &amp; Distribution</span>
-                <div className={styles.subnodesRow}>
-                  <span className={styles.subnodePill}>Direct Sourcing</span>
-                  <span className={styles.subnodePill}>Unified Logistics</span>
+                <div className={styles.supplyNodeRow}>
+                  <div className={styles.formatLogoNode} title="BOGO Go">
+                    <Image
+                      src="/Images/Logos/normalized/Go.png"
+                      alt="BOGO Go"
+                      width={140}
+                      height={56}
+                      className={styles.diagramLogoImg}
+                    />
+                  </div>
                 </div>
               </div>
+            </div>
+
+            {/* Connector: Tier 1 to Tier 2 */}
+            <div className={styles.tierConnector} aria-hidden="true">
+              <div className={styles.verticalStem} />
             </div>
 
             {/* Tier 2: 11 Category Brands */}
@@ -234,13 +240,18 @@ export default function Ecosystem() {
                     <Image
                       src={brand.logo}
                       alt={`BOGO ${brand.name}`}
-                      width={100}
-                      height={44}
+                      width={140}
+                      height={56}
                       className={styles.diagramLogoImg}
                     />
                   </div>
                 ))}
               </div>
+            </div>
+
+            {/* Connector: Tier 2 to Tier 3 */}
+            <div className={styles.tierConnector} aria-hidden="true">
+              <div className={styles.verticalStem} />
             </div>
 
             {/* Tier 3: Programs & Services */}
@@ -252,8 +263,8 @@ export default function Ecosystem() {
                     <Image
                       src={service.logo}
                       alt={service.name}
-                      width={100}
-                      height={44}
+                      width={140}
+                      height={56}
                       className={styles.diagramLogoImg}
                     />
                   </div>

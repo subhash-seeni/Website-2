@@ -127,22 +127,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 3rem;
-}
-
-.diagramLines {
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.diagramVector {
-  stroke: rgba(250, 248, 245, 0.25);
-  stroke-dasharray: 4 4;
 }
 
 .nodeRoot {
@@ -152,17 +137,19 @@
 .rootBox {
   background: #ffffff;
   border: 1px solid rgba(250, 248, 245, 0.25);
-  padding: 1.1rem 2rem;
+  padding: 1.1rem 2.25rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-radius: 4px;
+  border-radius: 6px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
 }
 
 .rootLogo {
-  width: 130px;
-  height: auto;
+  width: auto;
+  height: 44px;
+  max-width: 160px;
+  object-fit: contain;
   display: block;
 }
 
@@ -173,6 +160,63 @@
   letter-spacing: 0.08em;
   color: #555555;
   margin-top: 0.35rem;
+}
+
+/* Tree Connectors */
+.branchRootToTier1 {
+  width: 100%;
+  max-width: 960px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stemRootDown {
+  width: 1.5px;
+  height: 24px;
+  background: rgba(250, 248, 245, 0.3);
+}
+
+.crossbarTier1 {
+  width: 50%;
+  height: 1.5px;
+  background: rgba(250, 248, 245, 0.3);
+}
+
+.stemsTier1Down {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.stemCol {
+  width: 1.5px;
+  height: 20px;
+  background: rgba(250, 248, 245, 0.3);
+}
+
+@media (max-width: 767px) {
+  .crossbarTier1,
+  .stemsTier1Down {
+    display: none;
+  }
+  .stemRootDown {
+    height: 28px;
+  }
+}
+
+.tierConnector {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 36px;
+}
+
+.verticalStem {
+  width: 1.5px;
+  height: 100%;
+  background: rgba(250, 248, 245, 0.3);
 }
 
 .diagramTier {
@@ -196,12 +240,14 @@
 .tier1 {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1.75rem;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 960px;
 }
 
 @media (min-width: 768px) {
   .tier1 {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr 1fr;
   }
 }
 
@@ -209,7 +255,10 @@
   background: rgba(250, 248, 245, 0.05);
   border: 1px solid var(--border-dark);
   padding: 1.5rem;
-  border-radius: 4px;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .formatsNodeRow {
@@ -217,18 +266,22 @@
   flex-wrap: wrap;
   gap: 0.85rem;
   justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
 .formatLogoNode {
   background: #ffffff;
   border: 1px solid rgba(250, 248, 245, 0.2);
-  padding: 0.55rem 0.85rem;
-  border-radius: 4px;
+  padding: 0.45rem 0.85rem;
+  border-radius: 6px;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 0.25rem;
-  min-width: 105px;
+  justify-content: center;
+  flex: 1 1 110px;
+  min-width: 110px;
+  max-width: 150px;
+  height: 68px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
   transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
 }
@@ -239,94 +292,124 @@
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.22);
 }
 
-.formatNodeBadge {
-  font-size: 0.6875rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: #555555;
-}
-
-.subnodesRow {
+.supplyNodeRow {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
   justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
-.subnodePill {
-  font-size: var(--text-sm);
-  font-weight: 500;
-  padding: 0.55rem 1rem;
-  background: rgba(250, 248, 245, 0.08);
-  border: 1px solid var(--border-dark);
-  color: var(--text-primary-dark);
-  border-radius: 4px;
-  transition: background 150ms ease-out, border-color 150ms ease-out;
-}
-
-.subnodePill:hover {
-  background: rgba(250, 248, 245, 0.14);
-  border-color: rgba(250, 248, 245, 0.3);
+.supplyNodeRow .formatLogoNode {
+  flex: 0 1 180px;
+  min-width: 140px;
+  max-width: 200px;
 }
 
 .tier2 {
   background: rgba(250, 248, 245, 0.05);
   border: 1px solid var(--border-dark);
   padding: 2rem 1.5rem;
-  border-radius: 4px;
+  border-radius: 6px;
+  width: 100%;
+  max-width: 960px;
 }
 
 .brandsNodeMatrix {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem;
+  gap: 0.85rem;
   justify-content: center;
+  width: 100%;
 }
 
-.brandLogoTile,
-.serviceLogoTile {
+.brandLogoTile {
   background: #ffffff;
   border: 1px solid rgba(250, 248, 245, 0.2);
-  padding: 0.5rem 0.85rem;
-  border-radius: 4px;
+  padding: 0.45rem 0.85rem;
+  border-radius: 6px;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 110px;
-  height: 52px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+  flex: 0 1 calc(25% - 0.85rem);
+  min-width: 150px;
+  max-width: 210px;
+  height: 68px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
   transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
 }
 
-.brandLogoTile:hover,
-.serviceLogoTile:hover {
+.brandLogoTile:hover {
   transform: translateY(-2px);
   border-color: var(--accent-orange);
   box-shadow: 0 6px 14px rgba(0, 0, 0, 0.22);
 }
 
-.diagramLogoImg {
-  max-width: 95px;
-  max-height: 38px;
-  width: auto;
-  height: auto;
-  object-fit: contain;
-  display: block;
+@media (max-width: 768px) {
+  .brandLogoTile {
+    flex: 0 1 calc(33.333% - 0.85rem);
+    min-width: 130px;
+  }
+}
+
+@media (max-width: 480px) {
+  .brandLogoTile {
+    flex: 0 1 calc(50% - 0.6rem);
+    min-width: 120px;
+  }
 }
 
 .tier3 {
   background: rgba(250, 248, 245, 0.05);
   border: 1px solid var(--border-dark);
   padding: 1.75rem 1.5rem;
-  border-radius: 4px;
+  border-radius: 6px;
+  width: 100%;
+  max-width: 960px;
 }
 
 .servicesNodeRow {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem;
+  gap: 0.85rem;
   justify-content: center;
+  width: 100%;
+}
+
+.serviceLogoTile {
+  background: #ffffff;
+  border: 1px solid rgba(250, 248, 245, 0.2);
+  padding: 0.45rem 0.85rem;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 1 calc(25% - 0.85rem);
+  min-width: 150px;
+  max-width: 210px;
+  height: 68px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.serviceLogoTile:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent-orange);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.22);
+}
+
+@media (max-width: 768px) {
+  .serviceLogoTile {
+    flex: 0 1 calc(50% - 0.85rem);
+  }
+}
+
+.diagramLogoImg {
+  width: 100%;
+  height: 100%;
+  max-width: 145px;
+  max-height: 48px;
+  object-fit: contain;
+  display: block;
 }
 
 @media (max-width: 640px) {
