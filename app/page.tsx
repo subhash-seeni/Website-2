@@ -4,7 +4,6 @@ import Ecosystem from '@/components/Ecosystem';
 import Brands from '@/components/Brands';
 import Formats from '@/components/Formats';
 import Technology from '@/components/Technology';
-import Roadmap from '@/components/Roadmap';
 import Closing from '@/components/Closing';
 import Footer from '@/components/Footer';
 import MotionController from '@/components/MotionController';
@@ -20,7 +19,6 @@ export default function Home() {
         <Brands />
         <Formats />
         <Technology />
-        <Roadmap />
         <Closing />
       </main>
       <Footer />

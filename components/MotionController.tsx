@@ -348,41 +348,7 @@ export default function MotionController() {
           }
         );
 
-        // =====================================================================
-        // SECTION 7: 06 ROADMAP
-        // Strategic timeline track line draw and phases sequential activation
-        // =====================================================================
-        gsap.fromTo(
-          '#strategic-timeline-track div[class*="timelineTrackLine"]',
-          { scaleX: 0, transformOrigin: 'left center' },
-          {
-            scaleX: 1,
-            ease: 'none',
-            scrollTrigger: {
-              trigger: '#strategic-timeline-track',
-              start: 'top 75%',
-              end: 'bottom 50%',
-              scrub: 1,
-            },
-          }
-        );
 
-        gsap.fromTo(
-          '#strategic-timeline-track div[class*="phaseCard"]',
-          { opacity: 0, y: 20 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.8,
-            stagger: 0.15,
-            ease: 'power3.out',
-            scrollTrigger: {
-              trigger: '#strategic-timeline-track',
-              start: 'top 70%',
-              toggleActions: 'play none none reverse',
-            },
-          }
-        );
 
         // =====================================================================
         // SECTION 8: CLOSING

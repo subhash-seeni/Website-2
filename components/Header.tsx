@@ -22,7 +22,6 @@ export default function Header() {
             <li><a href="#brands" className={styles.navLink}><span className={styles.navNum}>02</span> Brands</a></li>
             <li><a href="#formats" className={styles.navLink}><span className={styles.navNum}>03</span> Formats</a></li>
             <li><a href="#technology" className={styles.navLink}><span className={styles.navNum}>04</span> Technology</a></li>
-            <li><a href="#roadmap" className={styles.navLink}><span className={styles.navNum}>05</span> Roadmap</a></li>
             <li><a href="#closing" className={styles.navCta}>Contact</a></li>
           </ul>
         </nav>
