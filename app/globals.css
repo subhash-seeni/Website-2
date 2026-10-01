@@ -22,9 +22,9 @@
   --border-light: rgba(14, 41, 78, 0.12);
   --border-dark: rgba(250, 248, 245, 0.15);
 
-  /* Typography Scale (Optimized for Ages 40-60: >= 17px body, line-height 1.6) */
-  --font-serif: var(--font-newsreader), Georgia, 'Times New Roman', serif;
-  --font-sans: var(--font-instrument-sans), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  /* Typography Scale — Plus Jakarta Sans */
+  --font-serif: var(--font-plus-jakarta-sans), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-sans: var(--font-plus-jakarta-sans), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
   --text-xs: 0.8125rem;   /* 13px */
   --text-sm: 0.9375rem;   /* 15px */
