@@ -25,6 +25,9 @@
   pointer-events: none;
   z-index: 0;
   overflow: hidden;
+  contain: strict;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
 }
 
 .heroBackgroundImage {
@@ -33,6 +36,8 @@
   width: 100%;
   height: 100%;
   opacity: 0.95;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
 }
 
 .heroOverlayFade {

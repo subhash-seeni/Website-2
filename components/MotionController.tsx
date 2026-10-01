@@ -27,7 +27,7 @@ export default function MotionController() {
     };
 
     gsap.ticker.add(tickerCb);
-    gsap.ticker.lagSmoothing(0);
+    gsap.ticker.lagSmoothing(500, 33);
 
     // Create matchMedia container
     const mm = gsap.matchMedia();
@@ -80,18 +80,6 @@ export default function MotionController() {
           '-=0.6'
         );
 
-        if (isDesktop) {
-          gsap.to('#hero-bg', {
-            scrollTrigger: {
-              trigger: '#hero',
-              start: 'top top',
-              end: 'bottom top',
-              scrub: 1.2,
-            },
-            y: 50,
-            ease: 'none',
-          });
-        }
 
         // =====================================================================
         // SECTION 2: 01 ECOSYSTEM (Deep Navy Band)
@@ -130,33 +118,6 @@ export default function MotionController() {
           }
         );
 
-        const vectors = gsap.utils.toArray<SVGPathElement>('#ecosystem svg path');
-        vectors.forEach((v) => {
-          try {
-            const length = v.getTotalLength();
-            gsap.set(v, {
-              strokeDasharray: length,
-              strokeDashoffset: length,
-            });
-          } catch {
-            // Fallback
-          }
-        });
-
-        if (vectors.length > 0) {
-          gsap.to(vectors, {
-            strokeDashoffset: 0,
-            stagger: 0.15,
-            duration: 1.2,
-            ease: 'power2.inOut',
-            scrollTrigger: {
-              trigger: '#ecosystem div[class*="diagramWrapper"]',
-              start: 'top 65%',
-              end: 'bottom 50%',
-              scrub: 1,
-            },
-          });
-        }
 
         gsap.fromTo(
           '#ecosystem div[class*="diagramTier"]',
