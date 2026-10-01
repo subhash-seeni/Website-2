@@ -207,12 +207,12 @@ export default function Brands() {
 
           </div>
 
-          {/* Right Concept Visual Panel */}
+          {/* Right Brand Showcase Panel */}
           <div className={styles.showcaseVisual} id="brand-visual-panel" role="tabpanel" aria-labelledby={`brand-tab-${activeBrand.id}`}>
             <div className={styles.visualImageWrap}>
               <Image
                 src={activeBrand.image}
-                alt={`BOGO ${activeBrand.name} interior concept rendering`}
+                alt={`BOGO ${activeBrand.name} interior retail space`}
                 width={1920}
                 height={820}
                 className={styles.visualImg}
@@ -220,7 +220,6 @@ export default function Brands() {
                 sizes="(max-width: 900px) 100vw, 60vw"
               />
             </div>
-            <span className="concept-caption">BOGO {activeBrand.name} interior render</span>
           </div>
 
         </div>
