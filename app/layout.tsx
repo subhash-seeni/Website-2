@@ -16,10 +16,10 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 
 export const metadata: Metadata = {
   metadataBase: new URL('http://localhost:3000'),
-  title: "BOGO — Building India's Next Retail Ecosystem (Investor Overview)",
+  title: 'BOGO',
   description: 'Where brands, technology and experiences come together. A comprehensive ecosystem overview for partners and institutional investors.',
   openGraph: {
-    title: "BOGO — Building India's Next Retail Ecosystem",
+    title: 'BOGO',
     description: 'Where brands, technology and experiences come together.',
     images: ['/Images/Outlet images/Square.png'],
   },
