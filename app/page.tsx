@@ -7,10 +7,12 @@ import Formats from '@/components/Formats';
 import Roadmap from '@/components/Roadmap';
 import Closing from '@/components/Closing';
 import Footer from '@/components/Footer';
+import MotionController from '@/components/MotionController';
 
 export default function Home() {
   return (
     <>
+      <MotionController />
       <Header />
       <main id="main-content">
         <Hero />
