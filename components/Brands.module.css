@@ -48,7 +48,7 @@
   overflow: hidden;
 }
 
-@media (min-width: 900px) {
+@media (min-width: 960px) {
   .showcaseFrame {
     grid-template-columns: 380px 1fr;
   }
@@ -253,13 +253,19 @@
   grid-column: 1 / -1;
 }
 
-/* Visual Panel */
+/* Right Showcase Panel (Top-aligned with sidebar) */
 .showcaseVisual {
-  background: var(--bg-grey);
+  background: #FAF8F5;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding: 2rem;
+  justify-content: flex-start;
+  padding: 3rem 2.5rem;
+}
+
+@media (max-width: 959px) {
+  .showcaseVisual {
+    padding: 2.25rem 1.75rem;
+  }
 }
 
 .visualImageWrap {
@@ -270,6 +276,7 @@
   background: #FFFFFF;
   border: 1px solid var(--border-light);
   border-radius: 2px;
+  transition: opacity 300ms ease;
 }
 
 .visualImg {
@@ -277,4 +284,121 @@
   height: 100%;
   object-fit: cover;
   display: block;
+}
+
+.conceptCaption {
+  font-size: 0.75rem;
+  color: var(--text-muted-light);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin: 0.65rem 0 1.75rem;
+  display: block;
+  transition: opacity 300ms ease;
+}
+
+/* Text Content Block Under Image with Fixed Min-Height */
+.brandContentBlock {
+  display: flex;
+  flex-direction: column;
+  min-height: 250px;
+  transition: opacity 300ms ease 80ms;
+}
+
+@media (max-width: 959px) {
+  .brandContentBlock {
+    min-height: auto;
+  }
+}
+
+.brandDescription {
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: var(--text-primary-light);
+  max-width: 62ch;
+  margin: 0 0 1.75rem;
+}
+
+.offeringsSection {
+  display: flex;
+  flex-direction: column;
+}
+
+.offeringsHairline {
+  width: 100%;
+  height: 1px;
+  background-color: var(--border-light);
+  margin-bottom: 1rem;
+}
+
+.offeringsLabel {
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-primary-light);
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.offeringsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem 1.75rem;
+}
+
+@media (max-width: 959px) {
+  .offeringsList {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .offeringsList {
+    grid-template-columns: 1fr;
+    gap: 0.65rem;
+  }
+}
+
+.offeringItem {
+  display: flex;
+  align-items: baseline;
+  font-size: 1rem;
+  line-height: 1.45;
+  color: var(--text-primary-light);
+}
+
+.offeringNum {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--accent-orange);
+  margin-right: 0.55rem;
+  letter-spacing: 0.04em;
+  flex-shrink: 0;
+}
+
+.offeringText {
+  color: var(--text-primary-light);
+}
+
+/* Fading states for smooth 300ms crossfade */
+.imageFading {
+  opacity: 0;
+}
+
+.textFading {
+  opacity: 0;
+}
+
+/* Reduced Motion Compliance */
+@media (prefers-reduced-motion: reduce) {
+  .visualImageWrap,
+  .conceptCaption,
+  .brandContentBlock {
+    transition: none !important;
+    opacity: 1 !important;
+  }
 }
