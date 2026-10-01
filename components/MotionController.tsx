@@ -79,15 +79,14 @@ export default function MotionController() {
         );
 
         if (isDesktop) {
-          gsap.to('#hero-media svg', {
+          gsap.to('#hero-media', {
             scrollTrigger: {
               trigger: '#hero',
               start: 'top top',
               end: 'bottom top',
               scrub: 1.2,
             },
-            rotate: 12,
-            y: 20,
+            y: 35,
             ease: 'none',
           });
         }
