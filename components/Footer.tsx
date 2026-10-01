@@ -76,7 +76,7 @@ export default function Footer() {
     return pathname === href ? 'page' : undefined;
   };
 
-  const { footer, companyDetails, socialLinks, bottomBar } = navigationConfig;
+  const { footer, socialLinks, bottomBar } = navigationConfig;
 
   return (
     <footer className={styles.siteFooter} ref={footerRef} role="contentinfo" id="site-footer">
@@ -235,30 +235,6 @@ export default function Footer() {
             </nav>
           </div>
 
-        </div>
-
-        {/* C. Contact and Company Details (quiet row beneath columns) */}
-        <div className={styles.companyDetailsRow}>
-          <div className={styles.detailItem}>
-            <span className={styles.detailLabel}>Registered entity name:</span>{' '}
-            <span className={styles.todoMarker}>{companyDetails.entityName}</span>
-          </div>
-          <div className={styles.detailItem}>
-            <span className={styles.detailLabel}>Registered address:</span>{' '}
-            <span className={styles.todoMarker}>{companyDetails.address}</span>
-          </div>
-          <div className={styles.detailItem}>
-            <span className={styles.detailLabel}>Email:</span>{' '}
-            <span className={styles.todoMarker}>{companyDetails.email}</span>
-          </div>
-          <div className={styles.detailItem}>
-            <span className={styles.detailLabel}>Phone:</span>{' '}
-            <span className={styles.todoMarker}>{companyDetails.phone}</span>
-          </div>
-          <div className={styles.detailItem}>
-            <span className={styles.detailLabel}>CIN:</span>{' '}
-            <span className={styles.todoMarker}>{companyDetails.cin}</span>
-          </div>
         </div>
 
         {/* D. Social Links (plain text links, LinkedIn first, target=_blank, rel=noopener noreferrer) */}
