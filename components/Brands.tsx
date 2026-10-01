@@ -220,7 +220,7 @@ export default function Brands() {
                 sizes="(max-width: 900px) 100vw, 60vw"
               />
             </div>
-            <span className="concept-caption">Concept visualisation — BOGO {activeBrand.name} interior render</span>
+            <span className="concept-caption">BOGO {activeBrand.name} interior render</span>
           </div>
 
         </div>

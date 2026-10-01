@@ -48,7 +48,7 @@ export default function Footer() {
             &copy; {new Date().getFullYear()} BOGO. All rights reserved.
           </p>
           <p className={styles.footerDisclaimer}>
-            Images are illustrative concept visualisations.
+            Images are illustrative architectural renders.
           </p>
         </div>
 
