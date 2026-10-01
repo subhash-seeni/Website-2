@@ -1,0 +1,391 @@
+/* ==========================================================================
+   BOGO — Minimal Editorial Design System
+   ========================================================================== */
+
+:root {
+  --bg-color: #FAF8F5;
+  --text-color: #0e294e;
+  --text-muted: rgba(14, 41, 78, 0.72);
+  --border-hairline: rgba(14, 41, 78, 0.12);
+  --font-family: 'Instrument Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --max-width: 1100px;
+}
+
+/* Reset & Base */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: var(--font-family);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  min-height: 100vh;
+}
+
+/* Centered Single Column Container */
+.page-container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 3rem 1.5rem 6rem;
+  text-align: left;
+}
+
+@media (min-width: 768px) {
+  .page-container {
+    padding: 4rem 2.5rem 8rem;
+  }
+}
+
+@media (min-width: 1100px) {
+  .page-container {
+    padding: 5rem 0 9rem;
+  }
+}
+
+/* Hairline Dividers */
+.hairline {
+  border: 0;
+  border-top: 1px solid var(--border-hairline);
+  margin: 4.5rem 0;
+}
+
+@media (min-width: 768px) {
+  .hairline {
+    margin: 6rem 0;
+  }
+}
+
+/* Typography Base */
+h1, h2, h3, p {
+  color: var(--text-color);
+  font-weight: 400;
+}
+
+/* Links & Logo Micro-interaction (150ms opacity) */
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: opacity 150ms ease-out;
+}
+
+a:hover {
+  opacity: 0.65;
+}
+
+a:focus-visible {
+  outline: 2px solid var(--text-color);
+  outline-offset: 4px;
+}
+
+.brand-link {
+  display: inline-block;
+  line-height: 0;
+}
+
+.site-logo,
+.brand-logo {
+  display: block;
+  transition: opacity 150ms ease-out;
+}
+
+.site-logo:hover,
+.brand-logo:hover {
+  opacity: 0.8;
+}
+
+/* ==========================================================================
+   Section 1: Hero
+   ========================================================================== */
+.section-hero {
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-top {
+  margin-bottom: 5rem;
+}
+
+@media (min-width: 768px) {
+  .hero-top {
+    margin-bottom: 7rem;
+  }
+}
+
+.hero-top .site-logo {
+  width: 120px;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  margin-left: -9px; /* Compensate for canvas transparent padding to align with text */
+}
+
+@media (min-width: 768px) {
+  .hero-top .site-logo {
+    width: 136px;
+    margin-left: -10px;
+  }
+}
+
+.hero-content {
+  max-width: 820px;
+  margin-bottom: 3rem;
+}
+
+.hero-headline {
+  font-size: clamp(2.25rem, 5.2vw, 3.75rem);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  margin-bottom: 1.5rem;
+}
+
+.hero-subline {
+  font-size: clamp(1.125rem, 2vw, 1.375rem);
+  font-weight: 400;
+  line-height: 1.45;
+  color: var(--text-muted);
+  max-width: 640px;
+}
+
+/* ==========================================================================
+   Section Labels (Plain, quiet editorial markers)
+   ========================================================================== */
+.section-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 3rem;
+}
+
+@media (min-width: 768px) {
+  .section-label {
+    margin-bottom: 3.5rem;
+  }
+}
+
+/* ==========================================================================
+   Section 2: Brands Grid
+   4 columns desktop, 3 tablet, 2 mobile
+   ========================================================================== */
+.brands-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 2rem;
+  row-gap: 3.5rem;
+}
+
+@media (min-width: 640px) {
+  .brands-grid {
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 2.5rem;
+    row-gap: 4rem;
+  }
+}
+
+@media (min-width: 960px) {
+  .brands-grid {
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 3rem;
+    row-gap: 4.5rem;
+  }
+}
+
+.brand-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.brand-logo-wrap {
+  width: 100%;
+  max-width: 180px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.25rem;
+}
+
+.brand-logo {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  object-position: left center;
+}
+
+.brand-name {
+  font-size: 1.0625rem;
+  font-weight: 500;
+  line-height: 1.3;
+  margin-bottom: 0.35rem;
+}
+
+.brand-desc {
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.45;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   Section 3: Formats Grid
+   3 columns, same quiet style
+   ========================================================================== */
+.formats-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  column-gap: 2.5rem;
+  row-gap: 3.5rem;
+}
+
+@media (min-width: 640px) {
+  .formats-grid {
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 3rem;
+    row-gap: 3.5rem;
+  }
+}
+
+.format-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.format-logo-wrap {
+  width: 100%;
+  max-width: 180px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.25rem;
+}
+
+.format-name {
+  font-size: 1.125rem;
+  font-weight: 500;
+  line-height: 1.3;
+  margin-bottom: 0.35rem;
+}
+
+.format-desc {
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.45;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   Section 4: Footer
+   ========================================================================== */
+.section-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.25rem;
+}
+
+.footer-top .site-logo {
+  width: 110px;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  margin-left: -8px;
+}
+
+.footer-tagline {
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--text-color);
+}
+
+.footer-contact {
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: var(--text-muted);
+}
+
+.footer-email {
+  color: var(--text-color);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: var(--border-hairline);
+}
+
+.footer-email:hover {
+  text-decoration-color: var(--text-color);
+}
+
+/* ==========================================================================
+   Animation: Scroll Reveal & Stagger
+   Opacity and transform only. 500ms ease-out.
+   ========================================================================== */
+.reveal-section {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 500ms ease-out, transform 500ms ease-out;
+  will-change: opacity, transform;
+}
+
+.reveal-section.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.brands-grid .brand-item {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 500ms ease-out, transform 500ms ease-out;
+  transition-delay: var(--stagger-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+.brands-grid.is-revealed .brand-item {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.formats-grid .format-item {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 500ms ease-out, transform 500ms ease-out;
+  transition-delay: var(--stagger-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+.formats-grid.is-revealed .format-item {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Accessibility: Complete Motion Disable */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal-section,
+  .brands-grid .brand-item,
+  .formats-grid .format-item {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
