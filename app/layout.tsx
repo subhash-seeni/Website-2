@@ -23,6 +23,10 @@ export const metadata: Metadata = {
   },
 };
 
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
+import MotionController from '@/components/MotionController';
+
 export default function RootLayout({
   children,
 }: {
@@ -31,12 +35,15 @@ export default function RootLayout({
   return (
     <html lang="en" className={plusJakartaSans.variable}>
       <body>
+        <MotionController />
         <a href="#main-content" className="skip-link">
           Skip to main content
         </a>
         <div id="smooth-wrapper">
           <div id="smooth-content">
+            <Header />
             {children}
+            <Footer />
           </div>
         </div>
       </body>

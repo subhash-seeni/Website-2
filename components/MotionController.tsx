@@ -17,6 +17,8 @@ export default function MotionController() {
       smoothWheel: true,
     });
 
+    (window as any).__lenis = lenis;
+
     // Wire Lenis to ScrollTrigger
     lenis.on('scroll', ScrollTrigger.update);
 

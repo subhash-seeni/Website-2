@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { navigationConfig } from '@/config/navigation';
 import styles from './Header.module.css';
 
 export default function Header() {
@@ -18,11 +19,24 @@ export default function Header() {
         </Link>
         <nav aria-label="Investor Navigation">
           <ul className={styles.navList}>
-            <li><a href="#ecosystem" className={styles.navLink}><span className={styles.navNum}>01</span> Ecosystem</a></li>
-            <li><a href="#brands" className={styles.navLink}><span className={styles.navNum}>02</span> Brands</a></li>
-            <li><a href="#formats" className={styles.navLink}><span className={styles.navNum}>03</span> Formats</a></li>
-            <li><a href="#technology" className={styles.navLink}><span className={styles.navNum}>04</span> Technology</a></li>
-            <li><a href="#closing" className={styles.navCta}>Contact</a></li>
+            {navigationConfig.header.map((item) => {
+              if (item.id === 'contact') {
+                return (
+                  <li key={item.id}>
+                    <a href={item.href} className={styles.navCta}>
+                      {item.label}
+                    </a>
+                  </li>
+                );
+              }
+              return (
+                <li key={item.id}>
+                  <a href={item.href} className={styles.navLink}>
+                    <span className={styles.navNum}>{item.num}</span> {item.label}
+                  </a>
+                </li>
+              );
+            })}
           </ul>
         </nav>
       </div>
