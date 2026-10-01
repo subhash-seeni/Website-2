@@ -1,0 +1,51 @@
+.sectionVision {
+  padding: 8rem 0 9rem;
+  position: relative;
+}
+
+.visionContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.visionContent {
+  max-width: 960px;
+}
+
+.visionStatement {
+  font-family: var(--font-serif);
+  font-size: clamp(2.5rem, 5.2vw, 4.25rem);
+  font-weight: 400;
+  line-height: 1.18;
+  letter-spacing: -0.02em;
+  color: var(--text-primary-dark);
+  margin-bottom: 3.5rem;
+}
+
+.visionWord {
+  display: inline-block;
+  transition: opacity 150ms ease-out;
+}
+
+.visionDivider {
+  margin-bottom: 2.5rem;
+  max-width: 240px;
+}
+
+.visionSupporting {
+  font-family: var(--font-sans);
+  font-size: clamp(1.1875rem, 2.2vw, 1.5rem);
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--text-secondary-dark);
+  max-width: 680px;
+}
+
+@media (max-width: 768px) {
+  .sectionVision {
+    padding: 5rem 0 6rem;
+  }
+  .visionStatement {
+    margin-bottom: 2.5rem;
+  }
+}

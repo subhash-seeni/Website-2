@@ -1,0 +1,111 @@
+.siteFooter {
+  padding: 5rem 0 3.5rem;
+  border-top: 1px solid var(--border-light);
+  background-color: var(--bg-offwhite);
+}
+
+.footerTopRow {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  margin-bottom: 4rem;
+}
+
+@media (min-width: 768px) {
+  .footerTopRow {
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 4rem;
+  }
+}
+
+.footerBrand {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.footerLogo {
+  width: 90px;
+  height: auto;
+  display: block;
+  margin-left: -6px;
+}
+
+.footerCorporateText {
+  font-size: var(--text-sm);
+  color: var(--text-secondary-light);
+  max-width: 320px;
+  line-height: 1.5;
+}
+
+.footerHeading {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-primary-light);
+  display: block;
+  margin-bottom: 1.25rem;
+}
+
+.footerLinks {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.footerLink {
+  font-size: var(--text-sm);
+  color: var(--text-secondary-light);
+  text-decoration: none;
+  transition: color 150ms ease-out;
+}
+
+.footerLink:hover {
+  color: var(--text-primary-light);
+}
+
+.footerContactText {
+  font-size: var(--text-sm);
+  color: var(--text-secondary-light);
+  margin-bottom: 0.5rem;
+}
+
+.footerEmailLink {
+  font-size: var(--text-sm);
+  color: var(--text-primary-light);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.footerHairline {
+  margin-bottom: 2rem;
+}
+
+.footerBottomRow {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+@media (min-width: 768px) {
+  .footerBottomRow {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.footerLegal {
+  font-size: var(--text-xs);
+  color: var(--text-muted-light);
+}
+
+.footerDisclaimer {
+  font-size: var(--text-xs);
+  color: var(--text-secondary-light);
+  font-weight: 500;
+}

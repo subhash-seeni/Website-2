@@ -1,0 +1,27 @@
+import Header from '@/components/Header';
+import Hero from '@/components/Hero';
+import Vision from '@/components/Vision';
+import Ecosystem from '@/components/Ecosystem';
+import Brands from '@/components/Brands';
+import Formats from '@/components/Formats';
+import Roadmap from '@/components/Roadmap';
+import Closing from '@/components/Closing';
+import Footer from '@/components/Footer';
+
+export default function Home() {
+  return (
+    <>
+      <Header />
+      <main id="main-content">
+        <Hero />
+        <Vision />
+        <Ecosystem />
+        <Brands />
+        <Formats />
+        <Roadmap />
+        <Closing />
+      </main>
+      <Footer />
+    </>
+  );
+}
