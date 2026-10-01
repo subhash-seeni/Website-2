@@ -60,8 +60,8 @@ export default function MotionController() {
 
         heroTl.fromTo(
           '#hero-media',
-          { clipPath: 'inset(100% 0 0 0)', opacity: 0 },
-          { clipPath: 'inset(0% 0 0 0)', opacity: 1, duration: 1.2 }
+          { opacity: 0, scale: 0.94 },
+          { opacity: 1, scale: 1, duration: 1.1 }
         );
 
         heroTl.fromTo(
@@ -72,22 +72,22 @@ export default function MotionController() {
         );
 
         heroTl.fromTo(
-          ['#hero p', '#hero .heroActions', '#hero a'],
+          ['#hero p', '#hero div[class*="heroActions"]', '#hero a'],
           { opacity: 0, y: 16 },
           { opacity: 1, y: 0, duration: 0.7, stagger: 0.1 },
           '-=0.6'
         );
 
         if (isDesktop) {
-          gsap.to('#hero-media', {
+          gsap.to('#hero-media svg', {
             scrollTrigger: {
               trigger: '#hero',
               start: 'top top',
               end: 'bottom top',
-              scrub: 1,
+              scrub: 1.2,
             },
-            scale: 0.93,
-            borderRadius: '16px',
+            rotate: 12,
+            y: 20,
             ease: 'none',
           });
         }

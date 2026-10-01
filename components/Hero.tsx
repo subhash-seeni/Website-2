@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import styles from './Hero.module.css';
 
 export default function Hero() {
@@ -6,32 +5,10 @@ export default function Hero() {
     <section className={`band-light ${styles.sectionHero}`} id="hero" aria-label="Executive Introduction">
       <div className="container">
         
-        {/* Executive Corporate Bar */}
-        <div className={styles.heroExecutiveBar}>
-          <div className={styles.heroCorporateBrand}>
-            <Image
-              src="/Images/Logos/Bogo.png"
-              alt="BOGO"
-              width={140}
-              height={78}
-              priority
-              className={styles.heroLogo}
-            />
-            <span className={styles.corporateDivisionTag}>
-              Institutional Overview
-            </span>
-          </div>
-          <div className={styles.heroBriefingMeta}>
-            <span className={styles.briefingTag}>Multi-Format Retail</span>
-            <span className={styles.briefingTag}>Category Brands</span>
-            <span className={styles.briefingTag}>Integrated Supply</span>
-          </div>
-        </div>
-
         {/* Two-Column Executive Split Layout */}
         <div className={styles.heroSplitGrid}>
           
-          {/* Left Column: Strategic Thesis */}
+          {/* Left Column: Strategic Narrative */}
           <div className={styles.heroContentCol}>
             <div>
               <div className={styles.heroEyebrowTag}>
@@ -77,29 +54,67 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Right Column: Architectural Flagship Display Frame */}
-          <div className={styles.heroAssetCol}>
-            <div className={styles.architecturalCard} id="hero-media">
-              <div className={styles.cardHeaderBar}>
-                <span className={styles.cardAssetLabel}>Flagship Asset</span>
-                <span className={styles.cardAssetStatus}>BOGO Square</span>
-              </div>
-
-              <div className={styles.imageViewport}>
-                <Image
-                  src="/Images/Outlet images/Square.png"
-                  alt="BOGO Square Flagship architectural rendering"
-                  width={1672}
-                  height={941}
-                  priority
-                  className={styles.flagshipImg}
-                  sizes="(max-width: 960px) 100vw, 45vw"
+          {/* Right Column: Simple Architectural Geometric Pattern */}
+          <div className={styles.heroPatternCol} id="hero-media">
+            <div className={styles.patternContainer} aria-hidden="true">
+              <svg
+                viewBox="0 0 400 400"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className={styles.patternSvg}
+              >
+                {/* Outer Isometric Hexagonal Boundary */}
+                <polygon
+                  points="200,30 350,115 350,285 200,370 50,285 50,115"
+                  stroke="rgba(14, 41, 78, 0.18)"
+                  strokeWidth="1.2"
                 />
-              </div>
 
-              <div className={styles.cardFooterMeta}>
-                <span className={styles.flagshipTitle}>Architectural Visualisation</span>
-                <span className={styles.captionText}>Concept visualisation — BOGO Square Flagship</span>
+                {/* Inner Hexagonal Ring */}
+                <polygon
+                  points="200,80 305,140 305,260 200,320 95,260 95,140"
+                  stroke="rgba(14, 41, 78, 0.12)"
+                  strokeWidth="1"
+                  strokeDasharray="3 3"
+                />
+
+                {/* Center Core Hexagon */}
+                <polygon
+                  points="200,140 252,170 252,230 200,260 148,230 148,170"
+                  stroke="rgba(14, 41, 78, 0.22)"
+                  strokeWidth="1.5"
+                />
+
+                {/* Radial Geometric Connecting Axes */}
+                <line x1="200" y1="30" x2="200" y2="370" stroke="rgba(14, 41, 78, 0.15)" strokeWidth="1" />
+                <line x1="50" y1="115" x2="350" y2="285" stroke="rgba(14, 41, 78, 0.15)" strokeWidth="1" />
+                <line x1="50" y1="285" x2="350" y2="115" stroke="rgba(14, 41, 78, 0.15)" strokeWidth="1" />
+
+                {/* Isometric Facet Connectors */}
+                <line x1="200" y1="80" x2="252" y2="170" stroke="rgba(14, 41, 78, 0.12)" strokeWidth="1" />
+                <line x1="305" y1="140" x2="252" y2="230" stroke="rgba(14, 41, 78, 0.12)" strokeWidth="1" />
+                <line x1="305" y1="260" x2="200" y2="260" stroke="rgba(14, 41, 78, 0.12)" strokeWidth="1" />
+                <line x1="200" y1="320" x2="148" y2="230" stroke="rgba(14, 41, 78, 0.12)" strokeWidth="1" />
+                <line x1="95" y1="260" x2="148" y2="170" stroke="rgba(14, 41, 78, 0.12)" strokeWidth="1" />
+                <line x1="95" y1="140" x2="200" y2="140" stroke="rgba(14, 41, 78, 0.12)" strokeWidth="1" />
+
+                {/* Concentric Guide Arcs */}
+                <circle cx="200" cy="200" r="170" stroke="rgba(14, 41, 78, 0.08)" strokeWidth="1" />
+                <circle cx="200" cy="200" r="115" stroke="rgba(14, 41, 78, 0.08)" strokeWidth="1" />
+
+                {/* Strategic Brand Accent Nodes */}
+                <circle cx="200" cy="30" r="3.5" fill="#f78634" />
+                <circle cx="350" cy="115" r="3.5" fill="#4e8e3b" />
+                <circle cx="350" cy="285" r="3" fill="#0e294e" />
+                <circle cx="200" cy="370" r="3.5" fill="#f78634" />
+                <circle cx="50" cy="285" r="3.5" fill="#4e8e3b" />
+                <circle cx="50" cy="115" r="3" fill="#0e294e" />
+                <circle cx="200" cy="200" r="4.5" fill="#0e294e" />
+              </svg>
+
+              <div className={styles.patternLabelBlock}>
+                <span className={styles.patternTag}>Ecosystem Framework</span>
+                <span className={styles.patternSub}>Multi-Format Matrix</span>
               </div>
             </div>
           </div>
