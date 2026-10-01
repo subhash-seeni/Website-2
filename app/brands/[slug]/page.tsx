@@ -1,22 +1,10 @@
 import PlaceholderPage from '@/components/PlaceholderPage';
 import { notFound } from 'next/navigation';
 
-const BRANDS_MAP: Record<string, string> = {
-  essentials: 'Essentials',
-  daily: 'Daily',
-  farms: 'Farms',
-  superfoods: 'Superfoods',
-  health: 'Health',
-  beauty: 'Beauty',
-  luxe: 'Luxe',
-  divine: 'Divine',
-  paws: 'Paws',
-  play: 'Play',
-  classroom: 'Classroom',
-};
+import { BRANDS_DATA } from '@/lib/brands';
 
 export function generateStaticParams() {
-  return Object.keys(BRANDS_MAP).map((slug) => ({ slug }));
+  return BRANDS_DATA.map((brand) => ({ slug: brand.slug }));
 }
 
 export default async function BrandSlugPage({
@@ -25,7 +13,7 @@ export default async function BrandSlugPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const name = BRANDS_MAP[slug];
-  if (!name) return notFound();
-  return <PlaceholderPage title={`BOGO ${name}`} />;
+  const brand = BRANDS_DATA.find((b) => b.slug === slug);
+  if (!brand) return notFound();
+  return <PlaceholderPage title={`BOGO ${brand.name}`} />;
 }
