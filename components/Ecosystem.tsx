@@ -7,14 +7,17 @@ const PILLARS = [
     title: "Retail Formats",
     desc: "Scaled physical environments engineered for density, discovery, and community engagement.",
     icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        {/* Tiered architectural pavilion footprint */}
-        <rect x="2" y="7" width="11" height="13" rx="1" stroke="currentColor" strokeWidth="1.5" />
-        <path d="M2 11H13" stroke="rgba(250, 248, 245, 0.35)" strokeWidth="1.2" />
-        <path d="M5.5 15V20" stroke="var(--accent-orange)" strokeWidth="1.5" strokeLinecap="round" />
-        <path d="M13 11H20C21.1046 11 22 11.8954 22 13V20H13" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
-        <line x1="16.5" y1="14" x2="19" y2="14" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
-        <path d="M1 7H14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        {/* Modern store canopy & facade */}
+        <rect x="3" y="10" width="26" height="18" rx="2" stroke="#0e294e" strokeWidth="2" fill="rgba(14, 41, 78, 0.04)" />
+        <path d="M2 10L16 3L30 10" stroke="#0e294e" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        {/* Retail entrance portal */}
+        <path d="M12 28V17H20V28" stroke="#f78634" strokeWidth="2" strokeLinejoin="round" fill="rgba(247, 134, 52, 0.12)" />
+        {/* Large format window columns */}
+        <line x1="7" y1="15" x2="7" y2="23" stroke="#0e294e" strokeWidth="2" strokeLinecap="round" />
+        <line x1="25" y1="15" x2="25" y2="23" stroke="#0e294e" strokeWidth="2" strokeLinecap="round" />
+        {/* Brand identity emblem on pediment */}
+        <circle cx="16" cy="7.5" r="1.5" fill="#f78634" />
       </svg>
     )
   },
@@ -23,14 +26,14 @@ const PILLARS = [
     title: "Category Brands",
     desc: "Eleven specialized consumer brands curated for essential, wellness, and lifestyle needs.",
     icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        {/* Faceted isometric brand portfolio crystal */}
-        <path d="M12 2L20 6.5V15.5L12 20L4 15.5V6.5L12 2Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
-        <path d="M12 2V20" stroke="rgba(250, 248, 245, 0.35)" strokeWidth="1.2" />
-        <path d="M12 11L20 6.5" stroke="currentColor" strokeWidth="1.2" />
-        <path d="M12 11L4 6.5" stroke="currentColor" strokeWidth="1.2" />
-        <circle cx="12" cy="11" r="2.5" fill="var(--accent-orange)" />
-        <path d="M8 17.5L12 15L16 17.5" stroke="rgba(250, 248, 245, 0.6)" strokeWidth="1.2" />
+      <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        {/* Four interlocking category brand facets */}
+        <rect x="4" y="4" width="10" height="10" rx="2" stroke="#0e294e" strokeWidth="2" fill="rgba(14, 41, 78, 0.05)" />
+        <rect x="18" y="4" width="10" height="10" rx="2" stroke="#f78634" strokeWidth="2" fill="rgba(247, 134, 52, 0.15)" />
+        <rect x="4" y="18" width="10" height="10" rx="2" stroke="#4e8e3b" strokeWidth="2" fill="rgba(78, 142, 59, 0.15)" />
+        <rect x="18" y="18" width="10" height="10" rx="2" stroke="#0e294e" strokeWidth="2" fill="rgba(14, 41, 78, 0.05)" />
+        {/* Central connecting core */}
+        <circle cx="16" cy="16" r="3" fill="#f78634" stroke="#ffffff" strokeWidth="1.5" />
       </svg>
     )
   },
@@ -39,17 +42,19 @@ const PILLARS = [
     title: "Supply & Distribution",
     desc: "Direct farm-to-shelf sourcing, regional hubs, and unified omnichannel inventory.",
     icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        {/* Origin farm source */}
-        <circle cx="5" cy="6" r="2.5" stroke="#4e8e3b" strokeWidth="1.5" fill="rgba(78, 142, 59, 0.25)" />
-        {/* Regional central hub */}
-        <rect x="15" y="10" width="6" height="6" rx="1" stroke="currentColor" strokeWidth="1.5" />
-        {/* Shelf / store destination */}
-        <circle cx="6" cy="18" r="2.5" stroke="var(--accent-orange)" strokeWidth="1.5" />
+      <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        {/* Origin farm / source node (green) */}
+        <circle cx="6" cy="8" r="4" stroke="#4e8e3b" strokeWidth="2" fill="rgba(78, 142, 59, 0.2)" />
+        <circle cx="6" cy="8" r="1.5" fill="#4e8e3b" />
+        {/* Central regional distribution hub (navy) */}
+        <rect x="20" y="4" width="8" height="8" rx="1.5" stroke="#0e294e" strokeWidth="2" fill="rgba(14, 41, 78, 0.1)" />
+        {/* Destination retail shelf node (orange) */}
+        <circle cx="16" cy="24" r="4" stroke="#f78634" strokeWidth="2" fill="rgba(247, 134, 52, 0.2)" />
+        <circle cx="16" cy="24" r="1.5" fill="#f78634" />
         {/* Interconnected transit vectors */}
-        <path d="M7.5 6H13C14.1046 6 15 6.89543 15 8V10" stroke="rgba(250, 248, 245, 0.4)" strokeWidth="1.5" strokeLinecap="round" strokeDasharray="2 2" />
-        <path d="M18 16V17C18 18.1046 17.1046 19 16 19H8.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-        <path d="M7.5 7.5L15 12" stroke="currentColor" strokeWidth="1.2" />
+        <path d="M10 8H16C18.2091 8 20 9.79086 20 12V12" stroke="#0e294e" strokeWidth="2" strokeLinecap="round" />
+        <path d="M24 12V18C24 20.2091 22.2091 22 20 22H20" stroke="#0e294e" strokeWidth="2" strokeLinecap="round" />
+        <path d="M9 11L14 20" stroke="#f78634" strokeWidth="1.5" strokeDasharray="3 2" />
       </svg>
     )
   },
@@ -58,24 +63,21 @@ const PILLARS = [
     title: "Technology & Intelligence",
     desc: "Data-driven customer intelligence, smart store operations, and seamless digital commerce.",
     icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        {/* Central data processor */}
-        <rect x="8" y="8" width="8" height="8" rx="2" stroke="var(--accent-orange)" strokeWidth="1.5" fill="rgba(247, 134, 52, 0.15)" />
-        <circle cx="12" cy="12" r="1.5" fill="var(--accent-orange)" />
-        {/* Bus traces */}
-        <path d="M12 2V8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-        <path d="M12 16V22" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-        <path d="M2 12H8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-        <path d="M16 12H22" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-        {/* Peripheral edge nodes */}
-        <circle cx="4" cy="5" r="1.5" stroke="rgba(250, 248, 245, 0.5)" strokeWidth="1" />
-        <circle cx="20" cy="5" r="1.5" stroke="rgba(250, 248, 245, 0.5)" strokeWidth="1" />
-        <circle cx="4" cy="19" r="1.5" stroke="rgba(250, 248, 245, 0.5)" strokeWidth="1" />
-        <circle cx="20" cy="19" r="1.5" stroke="rgba(250, 248, 245, 0.5)" strokeWidth="1" />
-        <path d="M5.5 6L8 8" stroke="rgba(250, 248, 245, 0.3)" strokeWidth="1" />
-        <path d="M18.5 6L16 8" stroke="rgba(250, 248, 245, 0.3)" strokeWidth="1" />
-        <path d="M5.5 18L8 16" stroke="rgba(250, 248, 245, 0.3)" strokeWidth="1" />
-        <path d="M18.5 18L16 16" stroke="rgba(250, 248, 245, 0.3)" strokeWidth="1" />
+      <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        {/* Central intelligence processor */}
+        <rect x="9" y="9" width="14" height="14" rx="2.5" stroke="#0e294e" strokeWidth="2" fill="rgba(14, 41, 78, 0.08)" />
+        {/* Core intelligence glowing pulse */}
+        <rect x="13" y="13" width="6" height="6" rx="1" fill="#f78634" />
+        {/* Circuit bus traces radiating out */}
+        <path d="M16 2V9" stroke="#0e294e" strokeWidth="2" strokeLinecap="round" />
+        <path d="M16 23V30" stroke="#0e294e" strokeWidth="2" strokeLinecap="round" />
+        <path d="M2 16H9" stroke="#0e294e" strokeWidth="2" strokeLinecap="round" />
+        <path d="M23 16H30" stroke="#0e294e" strokeWidth="2" strokeLinecap="round" />
+        {/* Active corner sensor terminals */}
+        <circle cx="5" cy="5" r="2" fill="#f78634" />
+        <circle cx="27" cy="5" r="2" fill="#4e8e3b" />
+        <circle cx="5" cy="27" r="2" fill="#4e8e3b" />
+        <circle cx="27" cy="27" r="2" fill="#f78634" />
       </svg>
     )
   },
@@ -84,11 +86,13 @@ const PILLARS = [
     title: "Programs & Services",
     desc: "Comprehensive ecosystem initiatives extending value across partner and consumer touchpoints.",
     icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        {/* Interlinked ecosystem loop with dual focal points */}
-        <path d="M7.5 16C5.01472 16 3 13.9853 3 11.5C3 9.01472 5.01472 7 7.5 7C10.5 7 13.5 16 16.5 16C18.9853 16 21 13.9853 21 11.5C21 9.01472 18.9853 7 16.5 7C13.5 7 10.5 16 7.5 16Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-        <circle cx="7.5" cy="11.5" r="2" fill="var(--accent-orange)" />
-        <circle cx="16.5" cy="11.5" r="2" fill="#4e8e3b" />
+      <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        {/* Interconnected infinity value loop */}
+        <path d="M9.5 21C6.46243 21 4 18.5376 4 15.5C4 12.4624 6.46243 10 9.5 10C13.5 10 18.5 21 22.5 21C25.5376 21 28 18.5376 28 15.5C28 12.4624 25.5376 10 22.5 10C18.5 10 13.5 21 9.5 21Z" stroke="#0e294e" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+        {/* Partner touchpoint node */}
+        <circle cx="9.5" cy="15.5" r="3.5" fill="#f78634" stroke="#ffffff" strokeWidth="1.5" />
+        {/* Consumer touchpoint node */}
+        <circle cx="22.5" cy="15.5" r="3.5" fill="#4e8e3b" stroke="#ffffff" strokeWidth="1.5" />
       </svg>
     )
   }
